@@ -10,18 +10,15 @@
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
-    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
     <style>
         #header {
             margin: 50px 0 50px 0;
         }
         
         #item {
-            background: #FFFFFF;
-            box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
-            padding: 1em 1em;
-            border-radius: 0.28571429rem;
-            border: 1px solid rgba(34, 36, 38, 0.15);
+            margin-bottom: 15px;
         }
 
     </style>
@@ -32,20 +29,31 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <h3 id="header" class="ui dividing center aligned header">
-        Xiaomi Redmi Note 2 - ROM Mirrors
-    </h3>
-
-    <div class="ui container">
-        <div class="ui divided items" id="releases">
-            <div class="ui active dimmer">
-                <div class="ui text loader">Loading</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 id="header">Xiaomi Redmi Note 2 - ROM Mirrors</h3>
+            </div>
+        </div>
+        <div class="row" id="releases">
+            <div class="col-md-12">
+                <div class="card card-outline-info mb-3 text-center">
+                    <div class="card-block">
+                        <h3 class="card-title">Loading...</h3>
+                        <blockquote class="card-blockquote">
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
+                            </div>
+                            <footer>Please wait while we load the files.</footer>
+                        </blockquote>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
     <script src="https://code.jquery.com/jquery-3.2.0.min.js" integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I=" crossorigin="anonymous"></script>
-    <script src="semantic/dist/semantic.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 
     <script>
         window.ga = function() {
@@ -67,21 +75,27 @@
         function printReleases() {
             var responseObj = JSON.parse(this.responseText);
             var lenght = responseObj.length >= 5 ? 5 : responseObj.length;
+            if (lenght === 5) {
+                $('body').append('<div class="container"><div class="row"><div class="col-md-12"><div class="card card-outline-info mb-3 text-center"><div class="card-block"><h3 class="card-title">Want to see older releases?</h3><blockquote class="card-blockquote"><a href="https://github.com/TryHardDood/hermes-mirrors/releases" target="_blank"><i class="fa fa-arrow-down" aria-hidden="true"></i> Click here to view older mirrors.</a></blockquote></div></div></div></div></div>')
+            }
             $('#releases').html('');
 
             if (request.status == 404 || responseObj === 'undefined' || responseObj.length < 1) {
-                $('#releases').append('<div class="item"><i class="large github middle aligned icon"></i><div class="content"><a class="header" href="#">No releases found</a><div class="description"><p>Please check back later</p></div></div><div class="ui divider"></div><a href="#"><div class="ui disabled right floated basic green button">Download <i class="right download icon"></i></div></a></div>')
+                $('body').append('<div class="container"><div class="row"><div class="col-md-12"><div class="card card-outline-danger mb-3 text-center"><div class="card-block"><h3 class="card-title">No releases found.</h3><blockquote class="card-blockquote">Please check back later..</blockquote></div></div></div></div></div>')
             }
 
             for (var i = 0; i < lenght; i++) {
                 var obj = responseObj[i];
                 var assetsLenght = Object.keys(obj.assets).length;
                 if (assetsLenght === 0) {
-                    $('#releases').append('<div class="item"><i class="large github middle aligned icon"></i><div class="content"><a class="header" href="' + obj.html_url + '" target="_blank">' + ((obj.name === null) ? obj.tag_name : obj.name) + '</a><div class="description">' + ((obj.body === null) ? "No changelog provided" : obj.body.replace(/\n/g, "<br/>")) + '</div></div><div class="ui divider"></div><a href="' + obj.html_url + '" target="_blank"><div class="ui right floated basic green button">Download ' + obj.tag_name + '<i class="right download icon"></i></div></a></div>')
+                    // $('#releases').append('<div class="item"><i class="large github middle aligned icon"></i><div class="content"><a class="header" href="' + obj.html_url + '" target="_blank">' + ((obj.name === null) ? obj.tag_name : obj.name) + '</a><div class="description"><div style="white-space: pre">' + ((obj.body === null) ? "No changelog provided" : obj.body) + '</div></div></div><div class="ui divider"></div><a href="' + obj.html_url + '" target="_blank"><div class="ui right floated basic green button">Download ' + obj.tag_name + '<i class="right download icon"></i></div></a></div>')
+                    $('#releases').append('<div class="col-md-12" id="item"><div class="card card-outline-secondary"><div class="card-block"><h4 class="card-title">' + ((obj.name === null) ? obj.tag_name : obj.name) + '<span class="text-muted" style="font-size: 12px; float: right"><a href="' + obj.html_url + '" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> View on Github</a></span></h4><p class="card-text">' + ((obj.body === null) ? "No changelog provided" : obj.body) + '</p><a class="card-link btn btn-outline-success" href="' + obj.html_url + '" target="_blank">Download ' + obj.tag_name + '</a></div></div></div><br/>')
                 } else {
                     for (var j = 0; j < assetsLenght; j++) {
                         var asset = obj.assets[j];
-                        $('#releases').append('<div class="item"><i class="large github middle aligned icon"></i><div class="content"><a class="header" href="' + obj.html_url + '" target="_blank">' + obj.tag_name + '</a><div class="description">' + ((obj.body === null) ? "No changelog provided" : obj.body.replace(/\n/g, "<br/>")) + '</div></div><div class="ui divider"></div><a href="' + obj.browser_download_url + '" target="_blank"><div class="ui right floated basic green button">Download ' + asset.name + '<i class="right download icon"></i></div></a></div>')
+                        //$('#releases').append('<div class="item"><i class="large github middle aligned icon"></i><div class="content"><a class="header" href="' + obj.html_url + '" target="_blank">' + ((obj.name === null) ? obj.tag_name : obj.name) + '</a><div class="description"><div style="white-space: pre">' + ((obj.body === null) ? "No changelog provided" : obj.body) + '</div></div></div><div class="ui divider"></div><a href="' + obj.browser_download_url + '" target="_blank"><div class="ui right floated basic green button">Download ' + asset.name + '<i class="right download icon"></i></div></a></div>')
+                        $('#releases').append('<div class="col-md-12" id="item"><div class="card card-outline-secondary"><div class="card-block"><h4 class="card-title">' + ((obj.name === null) ? obj.tag_name : obj.name) + '<span class="text-muted" style="font-size: 12px; float: right"><a href="' + obj.html_url + '" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> View on Github</a></span></h4><p class="card-text">' + ((obj.body === null) ? "No changelog provided" : obj.body) + '</p><a class="card-link btn btn-outline-success" href="' + asset.browser_download_url + '" target="_blank"><i class="fa fa-download" aria-hidden="true"></i> Download ' + asset.name + '</a></div></div></div><br/>')
+
                     }
                 }
             }
