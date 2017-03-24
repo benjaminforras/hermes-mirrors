@@ -1,0 +1,93 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Xiaomi Redmi Note 2 - Mirrors</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <style>
+        #header {
+            margin: 50px 0 50px 0;
+        }
+        
+        #item {
+            background: #FFFFFF;
+            box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15);
+            padding: 1em 1em;
+            border-radius: 0.28571429rem;
+            border: 1px solid rgba(34, 36, 38, 0.15);
+        }
+
+    </style>
+</head>
+
+<body>
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <h3 id="header" class="ui dividing center aligned header">
+        Xiaomi Redmi Note 2 - ROM Mirrors
+    </h3>
+
+    <div class="ui container">
+        <div class="ui divided items" id="releases">
+            <div class="ui active dimmer">
+                <div class="ui text loader">Loading</div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.0.min.js" integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I=" crossorigin="anonymous"></script>
+    <script src="semantic/dist/semantic.min.js"></script>
+
+    <script>
+        window.ga = function() {
+            ga.q.push(arguments)
+        };
+        ga.q = [];
+        ga.l = +new Date;
+        ga('create', 'UA-96086571-1', 'auto');
+        ga('send', 'pageview')
+
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+    <script>
+        var request = new XMLHttpRequest();
+        request.onload = printReleases;
+        request.open('get', 'https://api.github.com/repos/TryHardDood/hermes-mirrors/releases', true);
+        request.send();
+
+        function printReleases() {
+            var responseObj = JSON.parse(this.responseText);
+            var lenght = responseObj.length >= 5 ? 5 : responseObj.length;
+            $('#releases').html('');
+
+            if (request.status == 404 || responseObj !== 'undefined' || responseObj.length < 1) {
+                $('#releases').append('<div class="item"><i class="large github middle aligned icon"></i><div class="content"><a class="header" href="#">No releases found</a><div class="description"><p>Please check back later</p></div></div><div class="ui divider"></div><a href="#"><div class="ui disabled right floated basic green button">Download <i class="right download icon"></i></div></a></div>')
+            }
+
+            for (var i = 0; i < lenght; i++) {
+                var obj = responseObj[i];
+                var assetsLenght = Object.keys(obj.assets).length;
+                if (assetsLenght === 0) {
+                    $('#releases').append('<div class="item"><i class="large github middle aligned icon"></i><div class="content"><a class="header" href="' + obj.html_url + '" target="_blank">' + obj.tag_name + '</a><div class="description">' + ((obj.body === null) ? "No changelog provided" : obj.body.replace(/\n/g, "<br/>")) + '</div></div><div class="ui divider"></div><a href="' + obj.html_url + '" target="_blank"><div class="ui right floated basic green button">Download ' + obj.tag_name + '<i class="right download icon"></i></div></a></div>')
+                } else {
+                    for (var j = 0; j < assetsLenght; j++) {
+                        var asset = obj.assets[j];
+                        $('#releases').append('<div class="item"><i class="large github middle aligned icon"></i><div class="content"><a class="header" href="' + obj.html_url + '" target="_blank">' + obj.tag_name + '</a><div class="description">' + ((obj.body === null) ? "No changelog provided" : obj.body.replace(/\n/g, "<br/>")) + '</div></div><div class="ui divider"></div><a href="' + obj.browser_download_url + '" target="_blank"><div class="ui right floated basic green button">Download ' + asset.name + '<i class="right download icon"></i></div></a></div>')
+                    }
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>
