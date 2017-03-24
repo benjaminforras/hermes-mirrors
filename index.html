@@ -51,6 +51,10 @@
                 </div>
             </div>
         </div>
+
+        <div class="fixed-bottom">
+            <p class="ml-1 mx-auto" style="text-align:center;">Made by <a href="https://github.com/TryHardDood/" target="_blank">TryHardDood</a> with <i class="fa fa-heart" aria-hidden="true" style="color:red;"></i></p>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.2.0.min.js" integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I=" crossorigin="anonymous"></script>
@@ -90,12 +94,10 @@
                 var obj = responseObj[i];
                 var assetsLenght = Object.keys(obj.assets).length;
                 if (assetsLenght === 0) {
-                    // $('#releases').append('<div class="item"><i class="large github middle aligned icon"></i><div class="content"><a class="header" href="' + obj.html_url + '" target="_blank">' + ((obj.name === null) ? obj.tag_name : obj.name) + '</a><div class="description"><div style="white-space: pre">' + ((obj.body === null) ? "No changelog provided" : obj.body) + '</div></div></div><div class="ui divider"></div><a href="' + obj.html_url + '" target="_blank"><div class="ui right floated basic green button">Download ' + obj.tag_name + '<i class="right download icon"></i></div></a></div>')
                     $('#releases').append('<div class="col-md-12" id="item"><div class="card card-outline-secondary"><div class="card-block"><h4 class="card-title">' + ((obj.name === null) ? obj.tag_name : obj.name) + '<span class="text-muted" style="font-size: 12px; float: right"><a href="' + obj.html_url + '" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> View on Github</a></span></h4><p class="card-text">' + ((obj.body === null) ? "No changelog provided" : obj.body) + '</p><a class="card-link btn btn-outline-success" href="' + obj.html_url + '" target="_blank">Download ' + obj.tag_name + '</a></div></div></div><br/>')
                 } else {
                     for (var j = 0; j < assetsLenght; j++) {
                         var asset = obj.assets[j];
-                        //$('#releases').append('<div class="item"><i class="large github middle aligned icon"></i><div class="content"><a class="header" href="' + obj.html_url + '" target="_blank">' + ((obj.name === null) ? obj.tag_name : obj.name) + '</a><div class="description"><div style="white-space: pre">' + ((obj.body === null) ? "No changelog provided" : obj.body) + '</div></div></div><div class="ui divider"></div><a href="' + obj.browser_download_url + '" target="_blank"><div class="ui right floated basic green button">Download ' + asset.name + '<i class="right download icon"></i></div></a></div>')
                         $('#releases').append('<div class="col-md-12" id="item"><div class="card card-outline-secondary"><div class="card-block"><h4 class="card-title">' + ((obj.name === null) ? obj.tag_name : obj.name) + '<span class="text-muted" style="font-size: 12px; float: right"><a href="' + obj.html_url + '" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> View on Github</a></span></h4><p class="card-text">' + ((obj.body === null) ? "No changelog provided" : obj.body) + '</p><a class="card-link btn btn-outline-success" href="' + asset.browser_download_url + '" target="_blank"><i class="fa fa-download" aria-hidden="true"></i> Download ' + asset.name + '</a></div></div></div><br/>')
 
                     }
