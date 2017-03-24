@@ -1,13 +1,16 @@
-
-node_modules/semantic-ui/dist/themes/basic/assets/fonts/icons\.svg
 # Ignore everything
 *
 
 # But not these files...
 !.gitignore
 !index.html
-!semantic.min.css
-!semantic.min.js
-
-# ...even if they are in subdirectories
-!*/
+!semantic/dist/semantic.min.css
+!semantic/dist/semantic.min.js
+!semantic/dist/themes/basic/assets/fonts/icons.eot
+!semantic/dist/themes/basic/assets/fonts/icons.svg
+!semantic/dist/themes/basic/assets/fonts/icons.ttf
+!semantic/dist/themes/basic/assets/fonts/icons.woff
+!semantic/dist/themes/default/assets/fonts/icons.eot
+!semantic/dist/themes/default/assets/fonts/icons.svg
+!semantic/dist/themes/default/assets/fonts/icons.ttf
+!semantic/dist/themes/default/assets/fonts/icons.woff
