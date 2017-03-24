@@ -1,7 +1,8 @@
-# Ignore everything
-*
-
-# But not these files...
-!.gitignore
-!index.html
-!semantic/dist/*
+/semantic/tasks/
+/semantic/src/
+/node_modules/
+/semantic/gulpfile.js
+/semantic/dist/semantic.js
+/semantic/dist/semantic.css
+/semantic/dist/components/
+/semantic.json
