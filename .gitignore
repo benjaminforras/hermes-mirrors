@@ -1,0 +1,13 @@
+
+node_modules/semantic-ui/dist/themes/basic/assets/fonts/icons\.svg
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!index.html
+!semantic.min.css
+!semantic.min.js
+
+# ...even if they are in subdirectories
+!*/
