@@ -64,6 +64,11 @@
 
             $('#releases').append(getHtmlForRelease(release.name, release.tag_name, release.id, release.prerelease, release.html_url, release.body, release.assets, true));
         }
+
+        if (getParameterByName('tab') !== null) {
+            var par = getParameterByName('tab');
+            $('#tagsList').find('a[href="' + par + '"]').trigger("click");
+        }
     }
     var request = new XMLHttpRequest();
     request.onload = PrintReleases;
@@ -94,11 +99,6 @@
         specReq.send();
 
         $('#showVersionModal').modal('show');
-    }
-
-    if (getParameterByName('tab') !== null) {
-        var par = getParameterByName('tab');
-        $('#tagsList').find('a[href="' + par + '"]').trigger("click");
     }
 }());
 
@@ -149,7 +149,6 @@ function getHtmlForRelease(name, tag_name, id, prerelease, html_url, body, asset
             '</div>' +
             '</div>';
     }
-
     return html;
 }
 
