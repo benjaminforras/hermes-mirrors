@@ -53,30 +53,20 @@
 
     <div class="container">
         <br/>
-        <div class="row" id="releases">
+        <div class="row" style="margin-bottom: 15px;">
             <div class="col-md-12">
-                <div class="card card-outline-info mb-3 text-center">
-                    <div class="card-block">
-                        <h3 class="card-title">Loading...</h3>
-                        <blockquote class="card-blockquote">
-                            <div class="progress">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div>
-                            </div>
-                            <footer>Please wait while we load the files.</footer>
-                        </blockquote>
-                    </div>
-                </div>
+                <h5>Tags</h5>
+                <ul class="nav nav-pills" id="tagsList"></ul>
             </div>
+        </div>
+        <div class="row" id="releases">
         </div>
 
         <div class="modal fade" id="showVersionModal" tabindex="-1" role="dialog" aria-labelledby="showVersionModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-12" id="item">
-                                <div id="showVersionModalBody"></div>
-                            </div>
+                        <div class="row" id="showVersionModalBody">
                         </div>
                     </div>
                     <div class="modal-footer" id="downloadButton">
