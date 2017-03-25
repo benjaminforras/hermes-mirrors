@@ -2,40 +2,57 @@
 <html class="no-js" lang="">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>Xiaomi Redmi Note 2 - Mirrors</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <!-- Place favicon.ico in the root directory -->
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="tether/css/tether.min.css">
-    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css">
-    <style>
-        #header {
-            margin: 50px 0 50px 0;
-        }
-        
-        #item {
-            margin-bottom: 15px;
-        }
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
 
-    </style>
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="tether/css/tether.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="app/css/main.min.css" />
 </head>
 
 <body>
     <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#">Xiaomi Redmi Note 2 - ROM Mirrors</a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/TryHardDood/hermes-mirrors/releases" target="_blank">
+                        <i class="fa fa-server" aria-hidden="true"></i> All releases
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav">
+                <li class="nav-item">
+                    <div class="btn-group" role="group">
+                        <a class="btn align-middle btn-outline-primary" href="https://t.me/joinchat/AAAAAEAcYGMW9RpRIW2-XQ" target="_blank">
+                            <i class="fa fa-sign-in" aria-hidden="true"></i> Join Telegram Group!
+                        </a>
+                        <a class="btn align-middle btn-outline-warning" href="https://forum.xda-developers.com/redmi-note-2/orig-development/6-x-based-roms-nofearnohappy-kernel-t3494631" target="_blank">
+                            <i class="fa fa-rss" aria-hidden="true"></i> XDA Thread
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
 
     <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 id="header">Xiaomi Redmi Note 2 - ROM Mirrors</h3>
-            </div>
-        </div>
+        <br/>
         <div class="row" id="releases">
             <div class="col-md-12">
                 <div class="card card-outline-info mb-3 text-center">
@@ -52,16 +69,36 @@
             </div>
         </div>
 
+        <div class="modal fade" id="showVersionModal" tabindex="-1" role="dialog" aria-labelledby="showVersionModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-12" id="item">
+                                <div id="showVersionModalBody"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer" id="downloadButton">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div class="fixed-bottom">
-            <p class="ml-1 mx-auto" style="text-align:center;">Made by <a href="https://github.com/TryHardDood/" target="_blank">TryHardDood</a> with <i class="fa fa-heart" aria-hidden="true" style="color:red;"></i></p>
+            <p class="ml-1 mx-auto" style="text-align:center;">
+                Made by <a href="https://github.com/TryHardDood/" target="_blank">TryHardDood</a> with <i class="fa fa-heart" aria-hidden="true" style="color:red;"></i>
+            </p>
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.0.min.js" integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I=" crossorigin="anonymous"></script>
-    <script src="tether/js/tether.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.0.min.js" integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="tether/js/tether.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="app/js/main.min.js"></script>
 
-    <script>
+    <script type="text/javascript">
         window.ga = function() {
             ga.q.push(arguments)
         };
@@ -72,40 +109,6 @@
 
     </script>
     <script src="https://www.google-analytics.com/analytics.js" async defer></script>
-    <script>
-        var request = new XMLHttpRequest();
-        request.onload = printReleases;
-        request.open('get', 'https://api.github.com/repos/TryHardDood/hermes-mirrors/releases', true);
-        request.send();
-
-        function printReleases() {
-            var responseObj = JSON.parse(this.responseText);
-            var lenght = responseObj.length >= 5 ? 5 : responseObj.length;
-            if (lenght === 5) {
-                $('body').append('<div class="container"><div class="row"><div class="col-md-12"><div class="card card-outline-info mb-3 text-center"><div class="card-block"><h3 class="card-title">Want to see older releases?</h3><blockquote class="card-blockquote"><a href="https://github.com/TryHardDood/hermes-mirrors/releases" target="_blank"><i class="fa fa-arrow-down" aria-hidden="true"></i> Click here to view older mirrors.</a></blockquote></div></div></div></div></div>')
-            }
-            $('#releases').html('');
-
-            if (request.status == 404 || responseObj === 'undefined' || responseObj.length < 1) {
-                $('body').append('<div class="container"><div class="row"><div class="col-md-12"><div class="card card-outline-danger mb-3 text-center"><div class="card-block"><h3 class="card-title">No releases found.</h3><blockquote class="card-blockquote">Please check back later..</blockquote></div></div></div></div></div>')
-            }
-
-            for (var i = 0; i < lenght; i++) {
-                var obj = responseObj[i];
-                var assetsLenght = Object.keys(obj.assets).length;
-                if (assetsLenght === 0) {
-                    $('#releases').append('<div class="col-md-12" id="item"><div class="card card-outline-secondary"><div class="card-block"><h4 class="card-title">' + ((obj.name === null) ? obj.tag_name : obj.name) + '<span class="text-muted" style="font-size: 12px; float: right"><a href="' + obj.html_url + '" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> View on Github</a></span></h4><p class="card-text">' + ((obj.body === null) ? "No changelog provided" : obj.body) + '</p><a class="card-link btn btn-outline-success" href="' + obj.html_url + '" target="_blank">Download ' + obj.tag_name + '</a></div></div></div><br/>')
-                } else {
-                    for (var j = 0; j < assetsLenght; j++) {
-                        var asset = obj.assets[j];
-                        $('#releases').append('<div class="col-md-12" id="item"><div class="card card-outline-secondary"><div class="card-block"><h4 class="card-title">' + ((obj.name === null) ? obj.tag_name : obj.name) + '<span class="text-muted" style="font-size: 12px; float: right"><a href="' + obj.html_url + '" target="_blank"><i class="fa fa-github" aria-hidden="true"></i> View on Github</a></span></h4><p class="card-text">' + ((obj.body === null) ? "No changelog provided" : obj.body) + '</p><a class="card-link btn btn-outline-success" href="' + asset.browser_download_url + '" target="_blank"><i class="fa fa-download" aria-hidden="true"></i> Download ' + asset.name + '</a></div></div></div><br/>')
-
-                    }
-                }
-            }
-        }
-
-    </script>
 </body>
 
 </html>
