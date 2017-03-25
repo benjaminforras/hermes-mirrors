@@ -95,6 +95,11 @@
 
         $('#showVersionModal').modal('show');
     }
+
+    if (getParameterByName('tab') !== null) {
+        var par = getParameterByName('tab');
+        $('#tagsList').find('a[href="' + par + '"]').trigger("click");
+    }
 }());
 
 function getHtmlForRelease(name, tag_name, id, prerelease, html_url, body, assets, specifided) {
