@@ -11,7 +11,8 @@
         ["All", []],
         ["Dinolek", []],
         ["Bule", []],
-        ["TWRP", []]
+        ["TWRP", []],
+        ["Kernel", []]
     ];
 
     for (var k = 0; k < releasesTags.length; k++)
@@ -62,6 +63,8 @@
                 releasesTags[2][1].push(release);
             else if (release.tag_name.toLowerCase().indexOf("twrp") !== -1)
                 releasesTags[3][1].push(release);
+            else if (release.tag_name.toLowerCase().indexOf("kernel") !== -1)
+                releasesTags[4][1].push(release);
 
             releasesTags[0][1].push(release);
 
