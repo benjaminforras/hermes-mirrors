@@ -44,11 +44,7 @@
 
     function PrintReleases() {
         var jsonObject = JSON.parse(this.responseText),
-            jsonLenght = /*(jsonObject.length >= 5 ? 5 : */ jsonObject.length;
-        if (jsonLenght === 5) {
-            $('body').append('<div class="container"><div class="row"><div class="col-md-12"><div class="card card-outline-info mb-3 text-center"><div class="card-block"><h3 class="card-title">Want to see older releases?</h3><blockquote class="card-blockquote"><a href="https://github.com/TryHardDood/hermes-mirrors/releases" target="_blank"><i class="fa fa-arrow-down" aria-hidden="true"></i> Click here to view older mirrors.</a></blockquote></div></div></div></div></div>');
-        }
-
+            jsonLenght = jsonObject.length;
         $('#releases').html('');
         if (jsonObject === 'undefined' || jsonObject.length < 1) {
             $('body').append('<div class="container"><div class="row"><div class="col-md-12"><div class="card card-outline-danger mb-3 text-center"><div class="card-block"><h3 class="card-title">No releases found.</h3><blockquote class="card-blockquote">Please check back later..</blockquote></div></div></div></div></div>');
