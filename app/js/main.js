@@ -152,7 +152,7 @@ function getHtmlForRelease(name, tag_name, id, prerelease, html_url, body, asset
             '<ul class="flex-column nav">';
 
         for (var i = 0; i < assets.length; i++) {
-            html += '<li class="nav-item">' +
+            html += '<li class="nav-item" style="margin-bottom: 5px">' +
                 '<a class="btn btn-outline-' + (prerelease ? "warning" : "success") + ' nav-link" href="' + assets[i].browser_download_url + '" target="_blank">' +
                 '<i aria-hidden=true class="fa fa-download"></i> Download ' + assets[i].name + '' +
                 '</a>' +
