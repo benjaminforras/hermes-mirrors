@@ -15,27 +15,30 @@
     ];
 
     for (var k = 0; k < releasesTags.length; k++)
-        $('#tagsList').append('<li class="nav-item"><a class="nav-link ' + (k === 0 ? 'active' : '') + '" href="' + k + '">' + releasesTags[k][0] + '</a></li>');
+        $('#tagsList').append('<li class="nav-item"><a class="nav-link ' + (k === 0 ? 'active' : '') + '" href="?tab=' + k + '">' + releasesTags[k][0] + '</a></li>');
 
-    $('#tagsList').click(function (e) {
+    $('#tagsList').click(function (event) {
 
         $('#tagsList .active').removeClass('active');
-        var clicked = $(e.target);
+        var clicked = $(event.target);
         clicked.addClass('active');
 
         $('#releases').html(getLoading());
-        if (releasesTags[clicked.attr('href')][1].length === 0) {
-            $('#releases').html('');
+        history.pushState(null, null, clicked.attr('href'));
+        var value = clicked.attr('href').replace("?tab=", "");
+
+        $('#releases').html('');
+        if (releasesTags[value][1].length === 0) {
             $('#releases').append('<div class="container"><div class="row"><div class="col-md-12"><div class="card card-outline-danger mb-3 text-center"><div class="card-block"><h3 class="card-title">No releases found.</h3><blockquote class="card-blockquote">Please check back later..</blockquote></div></div></div></div></div>');
         } else {
-            $('#releases').html('');
-            for (var h = 0; h < releasesTags[clicked.attr('href')][1].length; h++) {
-                var release = releasesTags[clicked.attr('href')][1][h];
+            for (var h = 0; h < releasesTags[value][1].length; h++) {
+                var release = releasesTags[value][1][h];
                 $('#releases').append(getHtmlForRelease(release.name, release.tag_name, release.id, release.prerelease, release.html_url, release.body, release.assets, true));
             }
         }
 
-        e.preventDefault();
+        event.preventDefault();
+        event.stopPropagation();
     });
 
     function PrintReleases() {
@@ -67,7 +70,7 @@
 
         if (getParameterByName('tab') !== null) {
             var par = getParameterByName('tab');
-            $('#tagsList').find('a[href="' + par + '"]').trigger("click");
+            $('#tagsList').find('a[href="?tab=' + par + '"]').trigger("click");
         }
     }
     var request = new XMLHttpRequest();
@@ -77,18 +80,8 @@
 
     function ProcessSpecVersionLink() {
         var jsonObject = JSON.parse(this.responseText);
-        $('#showVersionModalBody').append(getHtmlForRelease(jsonObject.name, jsonObject.tag_name, jsonObject.id, jsonObject.prerelease, jsonObject.html_url, jsonObject.body, jsonObject.assets, false));
 
-        var assetsLenght = Object.keys(jsonObject.assets).length;
-        if (assetsLenght === 0) {
-            $('#downloadButton').append('<a class="btn btn-outline-' + (jsonObject.prerelease ? "warning" : "success") + '" href="' + jsonObject.html_url + '" target="_blank">Download ' + jsonObject.tag_name + '</a>');
-
-        } else {
-            for (var j = 0; j < assetsLenght; j++) {
-                var asset = jsonObject.assets[j];
-                $('#downloadButton').append('<a class="btn btn-outline-' + (jsonObject.prerelease ? "warning" : "success") + '" href="' + asset.browser_download_url + '" target="_blank"><i class="fa fa-download" aria-hidden="true"></i> Download ' + asset.name + '</a>');
-            }
-        }
+        $('#showVersionModalBody').html(getHtmlForRelease(jsonObject.name, jsonObject.tag_name, jsonObject.id, jsonObject.prerelease, jsonObject.html_url, jsonObject.body, jsonObject.assets, false));
     }
 
     if (getParameterByName('releaseId') !== null) {
@@ -98,11 +91,12 @@
         specReq.open('get', githubReleasesLink + '/' + getParameterByName('releaseId'));
         specReq.send();
 
+        $('#showVersionModalBody').html(getLoading());
         $('#showVersionModal').modal('show');
     }
 }());
 
-function getHtmlForRelease(name, tag_name, id, prerelease, html_url, body, assets, specifided) {
+function getHtmlForRelease(name, tag_name, id, prerelease, html_url, body, assets) {
     var html;
     if (Object.keys(assets).length === 0) {
         html = '<div class="col-md-12 item">' +
@@ -122,8 +116,17 @@ function getHtmlForRelease(name, tag_name, id, prerelease, html_url, body, asset
             '<span class="badge badge-' + (prerelease ? "warning" : "success") + '">' + (prerelease ? "Pre-Release" : "Release") + '</span>' +
             '</h6>' +
             '<p class="card-text">' + ((body === null) ? "No changelog provided" : body) + '</p>' +
-            (specifided ? '<a class="card-link btn btn-outline-' + (prerelease ? "warning" : "success") + '" href="' + html_url + '" target="_blank">Download ' + tag_name + '</a>' : '') +
             '</div>' +
+            '<div class=card-block style="border-top:1px solid rgba(0,0,0,.125)">' +
+            '<ul class="flex-column nav">';
+
+        html += '<li class="nav-item">' +
+            '<a class="btn btn-outline-' + (prerelease ? "warning" : "success") + ' nav-link" href="' + html_url + '" target="_blank">' +
+            '<i aria-hidden=true class="fa fa-download"></i> Download ' + tag_name + '' +
+            '</a>' +
+            '</li>';
+
+        html += '</ul></div>' +
             '</div>' +
             '</div>';
     } else {
@@ -144,8 +147,19 @@ function getHtmlForRelease(name, tag_name, id, prerelease, html_url, body, asset
             '	<span class="badge badge-' + (prerelease ? "warning" : "success") + '">' + (prerelease ? "Pre-Release" : "Release") + '</span>' +
             '</h6>' +
             '<p class="card-text">' + ((body === null) ? "No changelog provided" : body) + '</p>' +
-            (specifided ? '<a class="card-link btn btn-outline-' + (prerelease ? "warning" : "success") + '" href="' + assets[0].browser_download_url + '" target="_blank"><i class="fa fa-download" aria-hidden="true"></i> Download ' + assets[0].name + '</a>' : '') +
             '</div>' +
+            '<div class=card-block style="border-top:1px solid rgba(0,0,0,.125)">' +
+            '<ul class="flex-column nav">';
+
+        for (var i = 0; i < assets.length; i++) {
+            html += '<li class="nav-item">' +
+                '<a class="btn btn-outline-' + (prerelease ? "warning" : "success") + ' nav-link" href="' + assets[i].browser_download_url + '" target="_blank">' +
+                '<i aria-hidden=true class="fa fa-download"></i> Download ' + assets[i].name + '' +
+                '</a>' +
+                '</li>';
+        }
+
+        html += '</ul></div>' +
             '</div>' +
             '</div>';
     }
