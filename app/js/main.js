@@ -55,11 +55,11 @@
 
             if (release.tag_name.toLowerCase().indexOf("dinolek") !== -1)
                 releasesTags[1][1].push(release);
-            else if (release.tag_name.toLowerCase().indexOf("bule") !== -1)
+            if (release.tag_name.toLowerCase().indexOf("bule") !== -1)
                 releasesTags[2][1].push(release);
-            else if (release.tag_name.toLowerCase().indexOf("twrp") !== -1)
+            if (release.tag_name.toLowerCase().indexOf("twrp") !== -1)
                 releasesTags[3][1].push(release);
-            else if (release.tag_name.toLowerCase().indexOf("kernel") !== -1)
+            if (release.tag_name.toLowerCase().indexOf("kernel") !== -1)
                 releasesTags[4][1].push(release);
 
             releasesTags[0][1].push(release);
