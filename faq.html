@@ -27,12 +27,12 @@
         <a class="navbar-brand" href="#">Xiaomi Redmi Note 2 - ROM Mirrors</a>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home <span class="sr-only">(current)</span></a>
-                </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                </li>
+                <li class="nav-item active">
                     <a class="nav-link" href="faq.html">
-                        <i class="fa fa-question" aria-hidden="true"></i> FAQ
+                        <i class="fa fa-question" aria-hidden="true"></i> FAQ <span class="sr-only">(current)</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -60,22 +60,52 @@
         <br/>
         <div class="row" style="margin-bottom: 15px;">
             <div class="col-md-12">
-                <h5>Tags</h5>
-                <ul class="nav nav-pills" id="tagsList"></ul>
-            </div>
-        </div>
-        <div class="row" id="releases">
-        </div>
+                <div id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="card">
+                        <div class="card-header" role="tab" id="camera_1_head">
+                            <h5 class="mb-0">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#camera_1" aria-expanded="true" aria-controls="camera_1">
+                                  Camera is crashing! HELP
+                                </a>
+                            </h5>
+                        </div>
 
-        <div class="modal fade" id="showVersionModal" tabindex="-1" role="dialog" aria-labelledby="showVersionModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="row" id="showVersionModalBody">
+                        <div id="camera_1" class="collapse show" role="tabpanel" aria-labelledby="camera_1_head">
+                            <div class="card-block">
+                                It's a known bug, the devs are working on the fix.
+                            </div>
                         </div>
                     </div>
-                    <div class="modal-footer" id="downloadButton">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <div class="card">
+                        <div class="card-header" role="tab" id="audio_1_head">
+                            <h5 class="mb-0">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#audio_1" aria-expanded="false" aria-controls="audio_1">
+                                  Audio is bad.
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="audio_1" class="collapse" role="tabpanel" aria-labelledby="audio_1_head">
+                            <div class="card-block">
+                                <p>If you're using the second test version of Dinolek's rom, you'll need to flash the fix from the release.</p>
+                                <p><a href="https://tryharddood.github.io/hermes-mirrors/index.html?releaseId=5863972" target="_blank">Click here</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-header" role="tab" id="battery_1_head">
+                            <h5 class="mb-0">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#battery_1" aria-expanded="false" aria-controls="battery_1">
+                                  Battery is draining fast.
+                                </a>
+                            </h5>
+                        </div>
+                        <div id="battery_1" class="collapse" role="tabpanel" aria-labelledby="battery_1_head">
+                            <div class="card-block">
+                                <p>Use the latest version of Dinolek's rom.</p>
+                                <p>Remove all unnecessary apps.</p>
+                                <p>Install Greenify.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
