@@ -94,6 +94,7 @@
         $('#showVersionModal').modal('show');
     }
 }());
+var markdown_it = window.markdownit();
 
 function getHtmlForRelease(name, tag_name, id, prerelease, html_url, body, assets) {
     var html;
@@ -114,7 +115,7 @@ function getHtmlForRelease(name, tag_name, id, prerelease, html_url, body, asset
             '<h6 class="card-subtitle mb-2 text-muted">' +
             '<span class="badge badge-' + (prerelease ? "warning" : "success") + '">' + (prerelease ? "Pre-Release" : "Release") + '</span>' +
             '</h6>' +
-            '<p class="card-text">' + ((body === null) ? "No changelog provided" : body) + '</p>' +
+            '<p class="card-text">' + ((body === null) ? "No changelog provided" : markdown_it.render(body)) + '</p>' +
             '</div>' +
             '<div class=card-block style="border-top:1px solid rgba(0,0,0,.125)">' +
             '<ul class="flex-column nav">';
@@ -145,7 +146,7 @@ function getHtmlForRelease(name, tag_name, id, prerelease, html_url, body, asset
             '<h6 class="card-subtitle mb-2 text-muted">' +
             '	<span class="badge badge-' + (prerelease ? "warning" : "success") + '">' + (prerelease ? "Pre-Release" : "Release") + '</span>' +
             '</h6>' +
-            '<p class="card-text">' + ((body === null) ? "No changelog provided" : body) + '</p>' +
+            '<p class="card-text">' + ((body === null) ? "No changelog provided" : markdown_it.render(body)) + '</p>' +
             '</div>' +
             '<div class=card-block style="border-top:1px solid rgba(0,0,0,.125)">' +
             '<ul class="flex-column nav">';
