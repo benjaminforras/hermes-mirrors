@@ -93,7 +93,12 @@
         $('#showVersionModalBody').html(getLoading());
         $('#showVersionModal').modal('show');
     }
+
+    $("body").tooltip({
+        selector: '[data-toggle="tooltip"]'
+    });
 }());
+
 var markdown_it = window.markdownit();
 
 function getHtmlForRelease(name, tag_name, id, prerelease, html_url, body, assets) {
@@ -152,16 +157,12 @@ function getHtmlForRelease(name, tag_name, id, prerelease, html_url, body, asset
             '<ul class="flex-column nav">';
 
         for (var i = 0; i < assets.length; i++) {
-            html += '<li class="nav-item" style="margin-bottom: 5px">' +
+            html += '<li class="nav-item" style="margin-bottom: 5px" data-toggle="tooltip" data-placement="top" data-html="true" title="Downloaded <strong>' + assets[i].download_count + '</strong> time' + ((assets[i].download_count > 1) ? 's' : '') + '">' +
                 '<a class="btn btn-outline-' + (prerelease ? "warning" : "success") + ' nav-link" href="' + assets[i].browser_download_url + '" target="_blank">' +
                 '<i aria-hidden=true class="fa fa-download"></i> Download ' + assets[i].name + '' +
                 '</a>' +
                 '</li>';
         }
-
-        html += '</ul></div>' +
-            '</div>' +
-            '</div>';
     }
     return html;
 }
