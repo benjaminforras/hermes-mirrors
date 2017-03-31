@@ -93,7 +93,20 @@
     request.open('get', githubReleasesLink, true);
     request.send();
 
-    if (page === "index.html") {
+    if (page === "faq.html") {
+        for (var i = 0; i < faqData.length; i++) {
+            PrintFaq(i);
+        }
+
+        $("#faqBody a").click(function (e) {
+            var element = $(this);
+            if (!element.hasClass("collapsing")) {
+                $(this).collapse();
+            }
+            e.preventDefault();
+        });
+
+    } else {
         $('#releases').html(getLoading());
 
         for (var k = 0; k < releasesTags.length; k++)
@@ -121,18 +134,6 @@
 
             event.preventDefault();
             event.stopPropagation();
-        });
-    } else if (page === "faq.html") {
-        for (var i = 0; i < faqData.length; i++) {
-            PrintFaq(i);
-        }
-
-        $("#faqBody a").click(function (e) {
-            var element = $(this);
-            if (!element.hasClass("collapsing")) {
-                $(this).collapse();
-            }
-            e.preventDefault();
         });
     }
 
