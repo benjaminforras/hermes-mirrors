@@ -54,6 +54,7 @@
                          "**Here's what you can do:**",
                          "* Wait for an actual build from Dinolek",
                          "* Double tap the power button",
+                         "* Call your phone and pick it up, then press the back button. Also install No Lock from Google Play.",
                          "* Revert back to Marshmellow"
                      ]
                 ],
