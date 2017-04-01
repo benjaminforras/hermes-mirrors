@@ -3,10 +3,16 @@
 (function () {
     'use strict';
     $("body").tooltip({
+        animation: false,
         selector: '[data-toggle="tooltip"]'
     });
 
-    var markdown_it = window.markdownit();
+    var markdown_it = window.markdownit({
+        html: true,
+        linkify: true,
+        typographer: true
+    });
+
     var page = location.pathname.substring(location.pathname.lastIndexOf("/") + 1);
     var githubReleasesLink = 'https://api.github.com/repos/TryHardDood/hermes-mirrors/releases';
     var releasesTags = [
@@ -98,15 +104,6 @@
         for (var i = 0; i < faqData.length; i++) {
             PrintFaq(i);
         }
-
-        $("#faqBody a").click(function (e) {
-            var element = $(this);
-            if (!element.hasClass("collapsing")) {
-                $(this).collapse();
-            }
-            e.preventDefault();
-        });
-
     } else {
         $('#releases').html(getLoading());
 
@@ -312,8 +309,8 @@
         $('.accordion .accordion-section-content').slideUp(300).removeClass('open');
     }
 
-    $('.accordion-section-title').click(function (e) {
-        var currentAttrValue = jQuery(this).attr('href');
+    $('a.accordion-section-title').click(function (e) {
+        var currentAttrValue = $(this).attr('href');
 
         if ($(e.target).is('.active')) {
             close_accordion_section();
