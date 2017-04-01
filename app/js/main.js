@@ -108,7 +108,7 @@
         $('#releases').html(getLoading());
 
         for (var k = 0; k < releasesTags.length; k++)
-            $('#tagsList').append('<li class="nav-item"><a class="nav-link ' + (k === 0 ? 'active' : '') + '" href="?tab=' + k + '">' + releasesTags[k][0] + '</a></li>');
+            $('#tagsList').append('<a class="btn btn-outline-primary ' + (k === 0 ? 'active' : '') + '" href="?tab=' + k + '">' + releasesTags[k][0] + '</a>');
 
         $('#tagsList').click(function (event) {
 

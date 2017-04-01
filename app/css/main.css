@@ -26,3 +26,9 @@
     padding: 15px;
     display: none;
 }
+
+a a:hover,
+a:active,
+a:focus {
+    outline: 0;
+}
