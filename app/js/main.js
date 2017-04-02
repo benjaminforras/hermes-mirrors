@@ -80,6 +80,17 @@
                 ]
             ]
         ],
+        ["TWRP",
+            [
+                ["How to install .img files?",
+                     [
+                         "It's easy",
+                         "[First click here to learn the basics](http://bfy.tw/Azwa)",
+                         "Then find this link: [Click](https://www.xda-developers.com/how-to-install-twrp/)"
+                     ]
+                ]
+            ]
+        ],
         ["DualBoot",
             [
                 ["What's dualboot?",
