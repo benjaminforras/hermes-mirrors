@@ -25,14 +25,10 @@
     var faqData = [
         ["LineageOS 13",
             [
-                ["Camera is not working.",
-                    [
-                        "Well, wait until the developers fix it."
-                    ]
-                ],
                 ["Camera is crashing.",
                     [
-                         "It's a known bug, you can't do much but wait for the developers to fix it."
+                         "It's a known bug, you can't do much but wait for the developers to fix it.",
+                         "_Note: You're camera is crashing because you have an **s5k3m2** camera or because of the **dpframework**_"
                     ]
                 ],
                 ["Audio quality is bad.",
@@ -70,6 +66,12 @@
                          "Will be fixed in the near future."
                      ]
                 ],
+                ["Camera not working",
+                     [
+                         "Flash the fix from the release: ",
+                         "[Click here for the release](https://tryharddood.github.io/hermes-mirrors/index.html?releaseId=5897305)"
+                     ]
+                ],
                 ["Does CM Theme engine works?",
                      [
                          "_For Nougat there's no CM Theme engine_",
@@ -90,6 +92,21 @@
                      [
                          "_Go to the DualBootPatcher's xda thread_",
                          "Search for the 'How do I...?' section."
+                     ]
+                ]
+            ]
+        ],
+        ["Other",
+            [
+                ["I found a bug, what should I do?",
+                     [
+                         "**Well, report it to a Developer.**",
+                         "_You may be wondering now, Where and How you can do that?_",
+                         "**The answer is simple:**",
+                         "* In the Telegram group: [\(Here\)](https://t.me/joinchat/AAAAAEAcYGMW9RpRIW2-XQ)",
+                         "* In the XDA-Thread: [\(Here\)](https://forum.xda-developers.com/redmi-note-2/orig-development/6-x-based-roms-nofearnohappy-kernel-t3494631)",
+                         "_I'll just leave this image here.._",
+                         "[![GTFO](http://i.imgur.com/Ty8vE8G.png)]"
                      ]
                 ]
             ]
