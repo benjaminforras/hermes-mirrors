@@ -117,7 +117,7 @@
     request.open('get', githubReleasesLink, true);
     request.send();
 
-    if (page === "faq.html") {
+    if (~page.toLowerCase().indexOf("faq")) {
         for (var i = 0; i < faqData.length; i++) {
             PrintFaq(i);
         }
