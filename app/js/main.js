@@ -117,7 +117,7 @@
                          "* In the Telegram group: [\(Here\)](https://t.me/joinchat/AAAAAEAcYGMW9RpRIW2-XQ)",
                          "* In the XDA-Thread: [\(Here\)](https://forum.xda-developers.com/redmi-note-2/orig-development/6-x-based-roms-nofearnohappy-kernel-t3494631)",
                          "_I'll just leave this image here.._",
-                         "[![GTFO](http://i.imgur.com/Ty8vE8G.png)]"
+                         "![GTFO](http://i.imgur.com/Ty8vE8G.png)"
                      ]
                 ]
             ]
@@ -150,7 +150,7 @@
 
             $('#releases').html('');
             if (releasesTags[value][1].length === 0) {
-                $('#releases').append('<div class="container"><div class="row"><div class="col-md-12"><div class="card card-outline-danger mb-3 text-center"><div class="card-block"><h3 class="card-title">No releases found.</h3><blockquote class="card-blockquote">Please check back later..</blockquote></div></div></div></div></div>');
+                $('#releases').append('<div class="container"><div class="row"><div class="col"><div class="card card-outline-danger mb-3 text-center"><div class="card-block"><h3 class="card-title">No releases found.</h3><blockquote class="card-blockquote">Please check back later..</blockquote></div></div></div></div></div>');
             } else {
                 for (var h = 0; h < releasesTags[value][1].length; h++) {
                     var release = releasesTags[value][1][h];
@@ -185,7 +185,7 @@
             jsonLenght = jsonObject.length;
         $('#releases').html('');
         if (jsonObject === 'undefined' || jsonObject.length < 1) {
-            $('body').append('<div class="container"><div class="row"><div class="col-md-12"><div class="card card-outline-danger mb-3 text-center"><div class="card-block"><h3 class="card-title">No releases found.</h3><blockquote class="card-blockquote">Please check back later..</blockquote></div></div></div></div></div>');
+            $('body').append('<div class="container"><div class="row"><div class="col"><div class="card card-outline-danger mb-3 text-center"><div class="card-block"><h3 class="card-title">No releases found.</h3><blockquote class="card-blockquote">Please check back later..</blockquote></div></div></div></div></div>');
         }
 
         for (var i = 0; i < jsonLenght; i++) {
@@ -223,19 +223,24 @@
             html = '<div class="col-md-12 item">' +
                 '<div class="card card-outline-' + (prerelease ? "warning" : "secondary") + '">' +
                 '<div class="card-block">' +
-                '<h4 class="card-title">' + ((name === null) ? tag_name : name) + '' +
-                '<span class="text-muted" style="font-size: 12px; float: right">' +
-                '<a href="index.html?releaseId=' + id + '" target="_blank">' +
-                '<i class="fa fa-share-alt" aria-hidden="true"></i> Share' +
-                '</a> | ' +
-                '<a href="' + html_url + '" target="_blank">' +
-                '<i class="fa fa-github" aria-hidden="true"></i> View on Github' +
-                '</a>' +
-                '</span>' +
-                '</h4>' +
-                '<h6 class="card-subtitle mb-2 text-muted">' +
-                '<span class="badge badge-' + (prerelease ? "warning" : "success") + '">' + (prerelease ? "Pre-Release" : "Release") + '</span>' +
-                '</h6>' +
+                '       <div class="row">' +
+                '    <div class="col">' +
+                '       <h4 class="card-title"> ' + ((name === null) ? tag_name : name) + '' +
+                '            <a href="#" class="btn btn-sm btn-outline-' + (prerelease ? "warning" : "success") + '">' + (prerelease ? "Pre-Release" : "Release") + '</a>' +
+                '        </h4>' +
+                '    </div>' +
+                '    <div class="col">' +
+                '        <span style="font-size: 12px; float: right">' +
+                '            <a class="btn btn-sm btn-outline-primary" href="index.html?releaseId=' + id + '" target="_blank">' +
+                '                <i class="fa fa-share" aria-hidden="true"></i> Share' +
+                '            </a> | ' +
+                '            <a class="btn btn-sm btn-outline-primary" href="' + html_url + '" target="_blank">' +
+                '                <i class="fa fa-github" aria-hidden="true"></i> View on Github' +
+                '            </a>' +
+                '        </span>' +
+                '    </div>' +
+                '</div>' +
+                '<hr/>' +
                 '<p class="card-text">' + ((body === null) ? "No changelog provided" : markdown_it.render(body)) + '</p>' +
                 '</div>' +
                 '<div class=card-block style="border-top:1px solid rgba(0,0,0,.125)">' +
@@ -254,19 +259,24 @@
             html = '<div class="col-md-12 item">' +
                 '<div class="card card-outline-' + (prerelease ? "warning" : "secondary") + '">' +
                 '<div class="card-block">' +
-                '<h4 class="card-title">' + ((name === null) ? tag_name : name) + '' +
-                '	<span class="text-muted" style="font-size: 12px; float: right">' +
-                '		<a href="index.html?releaseId=' + id + '" target="_blank">' +
-                '			<i class="fa fa-share" aria-hidden="true"></i> Share' +
-                '		</a> | ' +
-                '		<a href="' + html_url + '" target="_blank">' +
-                '			<i class="fa fa-github" aria-hidden="true"></i> View on Github' +
-                '		</a>' +
-                '	</span>' +
-                '</h4>' +
-                '<h6 class="card-subtitle mb-2 text-muted">' +
-                '	<span class="badge badge-' + (prerelease ? "warning" : "success") + '">' + (prerelease ? "Pre-Release" : "Release") + '</span>' +
-                '</h6>' +
+                '       <div class="row">' +
+                '    <div class="col">' +
+                '       <h4 class="card-title"> ' + ((name === null) ? tag_name : name) + '' +
+                '            <a href="#" class="btn btn-sm btn-outline-' + (prerelease ? "warning" : "success") + '">' + (prerelease ? "Pre-Release" : "Release") + '</a>' +
+                '        </h4>' +
+                '    </div>' +
+                '    <div class="col">' +
+                '        <span style="font-size: 12px; float: right">' +
+                '            <a class="btn btn-sm btn-outline-primary" href="index.html?releaseId=' + id + '" target="_blank">' +
+                '                <i class="fa fa-share" aria-hidden="true"></i> Share' +
+                '            </a> | ' +
+                '            <a class="btn btn-sm btn-outline-primary" href="' + html_url + '" target="_blank">' +
+                '                <i class="fa fa-github" aria-hidden="true"></i> View on Github' +
+                '            </a>' +
+                '        </span>' +
+                '    </div>' +
+                '</div>' +
+                '<hr/>' +
                 '<p class="card-text">' + ((body === null) ? "No changelog provided" : markdown_it.render(body)) + '</p>' +
                 '</div>' +
                 '<div class=card-block style="border-top:1px solid rgba(0,0,0,.125)">' +
@@ -284,7 +294,7 @@
     }
 
     function getLoading() {
-        return ' <div class="col-md-12"> <div class="card card-outline-info mb-3 text-center"> <div class="card-block"> <h3 class="card-title">Loading...</h3> <blockquote class="card-blockquote"> <div class="progress"> <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div></div><footer>Please wait while we load the files.</footer> </blockquote> </div></div></div>';
+        return ' <div class="col"> <div class="card card-outline-info mb-3 text-center"> <div class="card-block"> <h3 class="card-title">Loading...</h3> <blockquote class="card-blockquote"> <div class="progress"> <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div></div><footer>Please wait while we load the files.</footer> </blockquote> </div></div></div>';
     }
 
     function getParameterByName(name, url) {
