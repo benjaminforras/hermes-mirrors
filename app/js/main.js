@@ -136,7 +136,7 @@
         $('#releases').html(getLoading());
 
         for (var k = 0; k < releasesTags.length; k++)
-            $('#tagsList').append('<a class="btn btn-outline-primary ' + (k === 0 ? 'active' : '') + '" href="?tab=' + k + '">' + releasesTags[k][0] + '</a>');
+            $('#tagsList').append('<button class="btn pmd-ripple-effect btn-primary ' + (k === 0 ? 'active' : '') + '" type="button" data-tab="' + k + '">' + releasesTags[k][0] + '</button>');
 
         $('#tagsList').click(function (event) {
 
@@ -145,8 +145,8 @@
             clicked.addClass('active');
 
             $('#releases').html(getLoading());
-            history.pushState(null, null, clicked.attr('href'));
-            var value = clicked.attr('href').replace("?tab=", "");
+            var value = clicked.data('tab');
+            history.pushState(null, null, "?tab=" + value);
 
             $('#releases').html('');
             if (releasesTags[value][1].length === 0) {
@@ -185,7 +185,7 @@
             jsonLenght = jsonObject.length;
         $('#releases').html('');
         if (jsonObject === 'undefined' || jsonObject.length < 1) {
-            $('body').append('<div class="container"><div class="row"><div class="col"><div class="card card-outline-danger mb-3 text-center"><div class="card-block"><h3 class="card-title">No releases found.</h3><blockquote class="card-blockquote">Please check back later..</blockquote></div></div></div></div></div>');
+            $('body').append(' <div class="container"> <div class="row"> <div class="col"> <div class="pmd-card pmd-card-media-inline pmd-z-depth"> <div class="pmd-card-media"> <div class="media-body"> <h2 class="pmd-card-title-text">No releases found</h2> </div><br/> <blockquote class="card-blockquote text-center">Please check back later..</blockquote> </div><div class="pmd-card-actions"> </div></div></div></div></div>');
         }
 
         for (var i = 0; i < jsonLenght; i++) {
@@ -207,7 +207,7 @@
 
         if (getParameterByName('tab') !== null) {
             var par = getParameterByName('tab');
-            $('#tagsList').find('a[href="?tab=' + par + '"]').trigger("click");
+            $('#tagsList').find('button[data-tab="' + par + '"]').trigger("click");
         }
     }
 
@@ -220,81 +220,20 @@
     function getHtmlForRelease(name, tag_name, id, prerelease, html_url, body, assets) {
         var html;
         if (Object.keys(assets).length === 0) {
-            html = '<div class="col-md-12 item">' +
-                '<div class="card card-outline-' + (prerelease ? "warning" : "secondary") + '">' +
-                '<div class="card-block">' +
-                '       <div class="row">' +
-                '    <div class="col">' +
-                '       <h4 class="card-title"> ' + ((name === null) ? tag_name : name) + '' +
-                '            <a href="#" class="btn btn-sm btn-outline-' + (prerelease ? "warning" : "success") + '">' + (prerelease ? "Pre-Release" : "Release") + '</a>' +
-                '        </h4>' +
-                '    </div>' +
-                '    <div class="col">' +
-                '        <span style="font-size: 12px; float: right">' +
-                '            <a class="btn btn-sm btn-outline-primary" href="index.html?releaseId=' + id + '" target="_blank">' +
-                '                <i class="fa fa-share" aria-hidden="true"></i> Share' +
-                '            </a> | ' +
-                '            <a class="btn btn-sm btn-outline-primary" href="' + html_url + '" target="_blank">' +
-                '                <i class="fa fa-github" aria-hidden="true"></i> View on Github' +
-                '            </a>' +
-                '        </span>' +
-                '    </div>' +
-                '</div>' +
-                '<hr/>' +
-                '<p class="card-text">' + ((body === null) ? "No changelog provided" : markdown_it.render(body)) + '</p>' +
-                '</div>' +
-                '<div class=card-block style="border-top:1px solid rgba(0,0,0,.125)">' +
-                '<ul class="flex-column nav">';
-
-            html += '<li class="nav-item">' +
-                '<a class="btn btn-outline-' + (prerelease ? "warning" : "success") + ' nav-link" href="' + html_url + '" target="_blank">' +
-                '<i aria-hidden=true class="fa fa-download"></i> Download ' + tag_name + '' +
-                '</a>' +
-                '</li>';
-
-            html += '</ul></div>' +
-                '</div>' +
-                '</div>';
+            html = '<div class="col-md-12"><div class="pmd-card pmd-card-media-inline pmd-z-depth"> <div class="pmd-card-media"> <div class="media-body"> <div class="row"> <div class="col"> <h2 class="pmd-card-title-text">' + ((name === null) ? tag_name : name) + '</h2> </div><div class="col-md-3"> <a href="index.html?releaseId=' + id + '" target="_blank"><button class="btn btn-sm pmd-btn-flat pmd-ripple-effect btn-primary pmd-btn-outline" type="button"><i class="fa fa-share" aria-hidden="true"></i> Share</button></a> <a href="' + html_url + '" target="_blank"><button class="btn btn-sm pmd-btn-flat pmd-ripple-effect btn-primary pmd-btn-outline" type="button"><i class="fa fa-github" aria-hidden="true"></i> View on Github</button></a> </div></div><span class="pmd-card-subtitle-text"><div class="badge badge-' + (prerelease ? "warning" : "success") + '">' + (prerelease ? "Pre-Release" : "Release") + '</div></span> </div>' + ((body === null) ? "No changelog provided" : markdown_it.render(body)) + ' </div><div class="pmd-card-actions"> <a href="' + html_url + '" target="_blank"><button class="btn btn-block pmd-btn-flat pmd-ripple-effect btn-' + (prerelease ? "warning" : "success") + ' pmd-btn-outline" type="button"><i aria-hidden="true" class="fa fa-download"></i> ' + tag_name + '</button></a> </div></div></div>';
         } else {
-            html = '<div class="col-md-12 item">' +
-                '<div class="card card-outline-' + (prerelease ? "warning" : "secondary") + '">' +
-                '<div class="card-block">' +
-                '       <div class="row">' +
-                '    <div class="col">' +
-                '       <h4 class="card-title"> ' + ((name === null) ? tag_name : name) + '' +
-                '            <a href="#" class="btn btn-sm btn-outline-' + (prerelease ? "warning" : "success") + '">' + (prerelease ? "Pre-Release" : "Release") + '</a>' +
-                '        </h4>' +
-                '    </div>' +
-                '    <div class="col">' +
-                '        <span style="font-size: 12px; float: right">' +
-                '            <a class="btn btn-sm btn-outline-primary" href="index.html?releaseId=' + id + '" target="_blank">' +
-                '                <i class="fa fa-share" aria-hidden="true"></i> Share' +
-                '            </a> | ' +
-                '            <a class="btn btn-sm btn-outline-primary" href="' + html_url + '" target="_blank">' +
-                '                <i class="fa fa-github" aria-hidden="true"></i> View on Github' +
-                '            </a>' +
-                '        </span>' +
-                '    </div>' +
-                '</div>' +
-                '<hr/>' +
-                '<p class="card-text">' + ((body === null) ? "No changelog provided" : markdown_it.render(body)) + '</p>' +
-                '</div>' +
-                '<div class=card-block style="border-top:1px solid rgba(0,0,0,.125)">' +
-                '<ul class="flex-column nav">';
+            html = '<div class="col-md-12"><div class="pmd-card pmd-card-media-inline pmd-z-depth"> <div class="pmd-card-media"> <div class="media-body"> <div class="row"> <div class="col"> <h2 class="pmd-card-title-text">' + ((name === null) ? tag_name : name) + '</h2> </div><div class="col-md-3"> <a href="index.html?releaseId=' + id + '" target="_blank"><button class="btn btn-sm pmd-btn-flat pmd-ripple-effect btn-primary pmd-btn-outline" type="button"><i class="fa fa-share" aria-hidden="true"></i> Share</button></a> <a href="' + html_url + '" target="_blank"><button class="btn btn-sm pmd-btn-flat pmd-ripple-effect btn-primary pmd-btn-outline" type="button"><i class="fa fa-github" aria-hidden="true"></i> View on Github</button></a> </div></div><span class="pmd-card-subtitle-text"><div class="badge badge-' + (prerelease ? "warning" : "success") + '">' + (prerelease ? "Pre-Release" : "Release") + '</div></span> </div>' + ((body === null) ? "No changelog provided" : markdown_it.render(body)) + ' </div><div class="pmd-card-actions" style="margin-right: 10px;">';
 
             for (var i = 0; i < assets.length; i++) {
-                html += '<li class="nav-item" style="margin-bottom: 5px" data-toggle="tooltip" data-placement="top" data-html="true" title="Downloaded <strong>' + assets[i].download_count + '</strong> time' + ((assets[i].download_count > 1) ? 's' : '') + '">' +
-                    '<a class="btn btn-outline-' + (prerelease ? "warning" : "success") + ' nav-link" href="' + assets[i].browser_download_url + '" target="_blank">' +
-                    '<i aria-hidden=true class="fa fa-download"></i> Download ' + assets[i].name + '' +
-                    '</a>' +
-                    '</li>';
+                html += '<a href="' + assets[i].browser_download_url + '" target="_blank" data-toggle="tooltip" data-placement="top" data-html="true" title="Downloaded <strong>' + assets[i].download_count + '</strong> time' + ((assets[i].download_count > 1) ? 's' : '') + '"><button class="btn btn-block pmd-btn-flat pmd-ripple-effect btn-' + (prerelease ? "warning" : "success") + ' pmd-btn-outline" type="button" style="margin-bottom: 5px;"><i aria-hidden="true" class="fa fa-download"></i>  Download ' + assets[i].name + '</button></a>';
             }
+            html += '</div></div></div>';
         }
         return html;
     }
 
     function getLoading() {
-        return ' <div class="col"> <div class="card card-outline-info mb-3 text-center"> <div class="card-block"> <h3 class="card-title">Loading...</h3> <blockquote class="card-blockquote"> <div class="progress"> <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div></div><footer>Please wait while we load the files.</footer> </blockquote> </div></div></div>';
+        return '<div class="col-md-12"><div class="pmd-card pmd-card-media-inline pmd-z-depth"> <div class="pmd-card-media"> <div class="media-body"> <h2 class="pmd-card-title-text">Loading</h2> </div><br/> <div class="progress"> <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;"></div></div></div><div class="pmd-card-actions"> </div></div></div>';
     }
 
     function getParameterByName(name, url) {
@@ -314,7 +253,7 @@
     }
 
     function PrintFaq(id) {
-        $('#faqBody').append('<h4 id="header">' + faqData[id][0] + '</h4>');
+        $('#faqBody').append('<h2 id="header">' + faqData[id][0] + '</h2>');
 
         for (var j = 0; j < faqData[id][1].length; j++) { // -> faqData[id][1][j][0] -> Question 
             var accordionItem = '<div class="accordion-section card card-outline-secondary">' +
