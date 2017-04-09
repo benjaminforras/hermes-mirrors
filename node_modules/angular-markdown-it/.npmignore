@@ -1,0 +1,9 @@
+bower_components
+coverage
+lib
+node_modules
+test
+.bowerrc
+.idea
+karma.conf.js
+Makefile

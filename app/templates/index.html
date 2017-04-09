@@ -1,0 +1,58 @@
+<div layout="row" layout-sm="column" layout-padding>
+    <div flex>
+        <div layout="column">
+            <md-chips ng-model="ctrl.selectedTags" md-autocomplete-snap md-transform-chip="ctrl.transformChip($chip)" md-require-match="ctrl.autocompleteRequireMatch">
+                <md-autocomplete md-selected-item="ctrl.selectedItem" md-search-text="ctrl.searchText" md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.name" placeholder="Enter a tag" md-on-remove="ctrl.removeChip($chip)">
+                    <span md-highlight-text="ctrl.searchText">{{item.name}}</span>
+                </md-autocomplete>
+                <md-chip-template>
+                    <span>
+                                  <strong>{{$chip.name}}</strong>
+                                </span>
+                </md-chip-template>
+            </md-chips>
+        </div>
+    </div>
+</div>
+<div layout="row" layout-sm="column" layout-padding>
+    <div flex>
+        <div layout="column">
+            <div ng-show="loading">
+                Please wait while we load the files.
+                <div layout="row" layout-sm="column" layout-align="space-around">
+                    <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+                </div>
+            </div>
+
+            <div ng-repeat="release in listOfReleases | filter:filterReleases()">
+                <md-card>
+                    <md-card-title>
+                        <md-card-title-text>
+                            <span class="md-headline">
+                                            {{ !release.name ? release.tag_name : release.name }} 
+                                            <div style="float:right;">
+                                                <md-button class="md-raised md-primary" ng-click="showShare($event, release)"><md-icon>share</md-icon> Share</md-button>
+                                                <md-button class="md-raised md-primary" ng-href="{{ release.html_url }}" target="_blank">
+                                                    <md-icon md-svg-src="app/icons/github-circle.svg"></md-icon> View on Github
+                                                </md-button>
+                                            </div>
+                                        </span>
+                            <span class="md-subhead"><md-badge class="{{ !release.prerelease ? 'green' : 'orange' }}">{{ !release.prerelease ? "Release" : "Pre-Release" }}</md-badge></span>
+                        </md-card-title-text>
+                    </md-card-title>
+                    <md-card-content>
+                        <div markdown-it="!release.body ? 'No changelog provided' : release.body"></div>
+                    </md-card-content>
+                    <md-list>
+                        <div ng-repeat="asset in release.assets">
+                            <md-list-item ng-href="{{ asset.browser_download_url }}">
+                                <md-icon>file_download</md-icon>
+                                <p>{{ asset.name }}</p>
+                            </md-list-item>
+                        </div>
+                    </md-list>
+                </md-card>
+            </div>
+        </div>
+    </div>
+</div>

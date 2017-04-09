@@ -1,7 +1,11 @@
-<!doctype html>
-<html class="no-js" lang="">
+<!DOCTYPE html>
+<html>
 
 <head>
+    <script type="text/javascript">
+        document.write('<base href="' + document.location + '" />');
+    </script>
+
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
 
@@ -40,110 +44,79 @@
     <link rel="apple-touch-icon" sizes="152x152" href="app/icons/favicon-152.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="app/icons/favicon-180.png" />
 
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="propeller/css/propeller.min.css" />
-    <link rel="stylesheet" type="text/css" href="tether/css/tether.min.css" />
-    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
-    <link rel="stylesheet" type="text/css" href="app/css/main.min.css" />
+    <link rel="stylesheet" href="node_modules/v-accordion/dist/v-accordion.min.css" />
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+    <style>
+        md-badge {
+            margin: 0 0 0 8px;
+            background-color: gray;
+            color: white;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        
+        .green {
+            margin: 0 0 0 8px;
+            background-color: #259b24;
+            color: white;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+        
+        .orange {
+            margin: 0 0 0 8px;
+            background-color: orange;
+            color: white;
+            padding: 2px 4px;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 
-<body>
+<body ng-app="hermesMirrorApp" ng-controller="ngAppController as ctrl" ng-cloak>
     <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-        <![endif]-->
-    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand" href="index.html">Xiaomi Redmi Note 2 - ROM Mirrors</a>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="faq.html">
-                        <i class="fa fa-question" aria-hidden="true"></i> FAQ
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://github.com/TryHardDood/hermes-mirrors/releases" target="_blank">
-                        <i class="fa fa-server" aria-hidden="true"></i> All releases
-                    </a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav">
-                <ul class="nav navbar-nav">
-                    <li class="nav-item">
-                        <div class="btn-group" role="group">
-                            <a href="https://t.me/joinchat/AAAAAEAcYGMW9RpRIW2-XQ" target="_blank">
-                                <button class="btn pmd-btn-outline pmd-ripple-effect btn-primary"><i class="fa fa-telegram" aria-hidden="true"></i> Join Telegram Group!</button>
-                            </a>
-                            <a href="https://discord.gg/VWZADHh" target="_blank">
-                                <button class="btn pmd-btn-outline pmd-ripple-effect btn-primary"><i class="fa fa-users" aria-hidden="true"></i> Join Discord Group!</button>
-                            </a>
-                            <a href="https://forum.xda-developers.com/redmi-note-2/orig-development/6-x-based-roms-nofearnohappy-kernel-t3494631" target="_blank">
-                                <button class="btn pmd-btn-outline pmd-ripple-effect btn-warning"><i class="fa fa-rss" aria-hidden="true"></i> XDA Thread</button>
-                            </a>
-                        </div>
-                    </li>
-                </ul>
-            </ul>
-        </div>
-    </nav>
+    <![endif]-->
 
-    <div class="container">
-        <br/>
-        <div class="row" style="margin-bottom: 15px;">
-            <div class="col-md-12">
-                <h5>Tags</h5>
-                <div class="btn-group" id="tagsList"></div>
+    <div layout="column" layout-fill>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2 md-truncate flex>Xiaomi Redmi Note 2 - Mirrors</h2>
+                <md-button ng-href="#!/index">
+                    <md-icon>home</md-icon> Home
+                </md-button>
+                <md-button ng-href="#!/faq">
+                    <md-icon>help</md-icon> FAQ
+                </md-button>
+                <md-button ng-href="https://github.com/TryHardDood/hermes-mirrors/releases" target="_blank">
+                    <md-icon>storage</md-icon> All releases
+                </md-button>
             </div>
-        </div>
-        <div class="row" id="releases">
-        </div>
 
-        <div tabindex="-1" class="modal fade" id="showVersionModal" style="display: none;" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <div class="row" id="showVersionModalBody">
-                        </div>
-                    </div>
-                    <div class="pmd-modal-action text-right pmd-modal-bordered">
-                        <button data-dismiss="modal" class="btn pmd-ripple-effect btn-primary pmd-btn-flat" type="button">Close</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </md-toolbar>
 
-        <div class="row">
-            <div class="col-md-12" style="background-color: white;border-top: 1px gray;">
-                <p class="ml-1 mx-auto" style="text-align:center;font-size:14px;margin-top:10px;">
-                    Made by <a href="https://github.com/TryHardDood/" target="_blank">TryHardDood</a> with <i class="fa fa-heart" aria-hidden="true" style="color:red;"></i>
-                </p>
+        <md-content>
+            <div ng-view></div>
+
+            <div layout="row" layout-align="center center" style="padding-bottom: 15px;">
+                <div>Made by <a style="text-decoration:none;" href="https://github.com/TryHardDood/" target="_blank">TryHardDood</a></div>
             </div>
-        </div>
+        </md-content>
     </div>
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.0.min.js" integrity="sha256-JAW99MJVpJBGcbzEuXk4Az05s/XyDdBomFqNlM3ic+I=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="tether/js/tether.min.js"></script>
-    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="propeller/js/propeller.min.js"></script>
-    <script type="text/javascript" src="markdown-it/markdown-it.min.js"></script>
-    <script type="text/javascript" src="app/js/main.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular/angular.js"></script>
+    <script type="text/javascript" src="node_modules/angular-aria/angular-aria.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-sanitize/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-animate/angular-animate.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-route/angular-route.min.js"></script>
+    <script type="text/javascript" src="node_modules/v-accordion/dist/v-accordion.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-material/angular-material.min.js"></script>
+    <script type="text/javascript" src="node_modules/markdown-it/dist/markdown-it.min.js"></script>
+    <script type="text/javascript" src="node_modules/angular-markdown-it/dist/ng-markdownit.min.js"></script>
 
-    <script type="text/javascript">
-        window.ga = function() {
-            ga.q.push(arguments);
-        };
-        ga.q = [];
-        ga.l = +new Date();
-        ga('create', 'UA-96086571-1', 'auto');
-        ga('send', 'pageview');
-
-    </script>
-    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
+    <script type="text/javascript" src="app/js/app.js"></script>
 </body>
 
 </html>

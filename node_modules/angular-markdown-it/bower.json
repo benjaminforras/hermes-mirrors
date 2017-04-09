@@ -1,0 +1,39 @@
+{
+  "name": "angular-markdown-it",
+  "description": "Angular 1.x directive for rendering markdown with markdown-it",
+  "main": "./dist/ng-markdownit.js",
+  "authors": [
+    "Matthias Adler <macedigital@gmail.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/macedigital/angular-markdown-it.git"
+  },
+  "dependencies": {
+    "angular": "^1.4",
+    "angular-sanitize": "^1.4",
+    "markdown-it": "^6.0"
+  },
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "angular",
+    "directive",
+    "markdown"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/macedigital/angular-markdown-it",
+  "ignore": [
+    "**/.*",
+    "bower_components",
+    "coverage",
+    "lib",
+    "node_modules",
+    "test",
+    "karma.conf.js",
+    "index.js",
+    "package.json"
+  ],
+  "version": "0.6.1"
+}

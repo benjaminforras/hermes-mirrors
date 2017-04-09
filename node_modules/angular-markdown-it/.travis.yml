@@ -1,0 +1,10 @@
+language: node_js
+node_js:
+    - "0.12"
+    - "4"
+    - "6"
+before_script:
+    - export DISPLAY=:99.0
+    - sh -e /etc/init.d/xvfb start
+script: "npm run-script test-travis"
+after_script: "npm install codecov.io && cat ./coverage/*/lcov.info | codecov"
