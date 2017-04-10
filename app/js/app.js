@@ -170,6 +170,19 @@ function AppController($scope, $http, $timeout, $location, $mdDialog) {
         self.selectedTags.push(transformChip($location.search().releaseId));
     } else if ($location.search().tag) {
         self.selectedTags.push(transformChip($location.search().tag));
+    } else if (getParameterByName('releaseId') !== null) {
+        self.selectedTags.push(getParameterByName('releaseId'));
+    } else if (getParameterByName('tab') !== null) {
+        var oldTags = getParameterByName('tab');
+        if (oldTags === "1") {
+            self.selectedTags.push(transformChip("Dinolek"));
+        } else if (oldTags === "2") {
+            self.selectedTags.push(transformChip("Bule"));
+        } else if (oldTags === "3") {
+            self.selectedTags.push(transformChip("TWRP"));
+        } else if (oldTags === "4") {
+            self.selectedTags.push(transformChip("Kernel"));
+        }
     }
 
     $scope.json = {
@@ -284,4 +297,21 @@ function AppController($scope, $http, $timeout, $location, $mdDialog) {
             }
         ]
     };
+
+    function old_getParameterByName(name, url) {
+        if (!url) {
+            url = window.location.href;
+        }
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) {
+            return null;
+        }
+        if (!results[2]) {
+            return '';
+        }
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
 }
