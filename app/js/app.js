@@ -170,10 +170,10 @@ function AppController($scope, $http, $timeout, $location, $mdDialog) {
         self.selectedTags.push(transformChip($location.search().releaseId));
     } else if ($location.search().tag) {
         self.selectedTags.push(transformChip($location.search().tag));
-    } else if (getParameterByName('releaseId') !== null) {
-        self.selectedTags.push(getParameterByName('releaseId'));
-    } else if (getParameterByName('tab') !== null) {
-        var oldTags = getParameterByName('tab');
+    } else if (old_getParameterByName('releaseId') !== null) {
+        self.selectedTags.push(old_getParameterByName('releaseId'));
+    } else if (old_getParameterByName('tab') !== null) {
+        var oldTags = old_getParameterByName('tab');
         if (oldTags === "1") {
             self.selectedTags.push(transformChip("Dinolek"));
         } else if (oldTags === "2") {
