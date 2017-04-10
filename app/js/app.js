@@ -171,7 +171,7 @@ function AppController($scope, $http, $timeout, $location, $mdDialog) {
     } else if ($location.search().tag) {
         self.selectedTags.push(transformChip($location.search().tag));
     } else if (old_getParameterByName('releaseId') !== null) {
-        self.selectedTags.push(old_getParameterByName('releaseId'));
+        self.selectedTags.push(old_getParameterByName('releaseId').toString());
     } else if (old_getParameterByName('tab') !== null) {
         var oldTags = old_getParameterByName('tab');
         if (oldTags === "1") {
