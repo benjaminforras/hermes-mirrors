@@ -4,6 +4,7 @@
 <head>
     <script type="text/javascript">
         document.write('<base href="' + document.location + '" />');
+
     </script>
 
     <meta charset="utf-8" />
@@ -72,6 +73,7 @@
             padding: 2px 4px;
             border-radius: 4px;
         }
+
     </style>
 </head>
 
@@ -80,31 +82,52 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
     <![endif]-->
 
-    <div layout="column" layout-fill>
-        <md-toolbar>
-            <div class="md-toolbar-tools">
-                <h2 md-truncate flex>Xiaomi Redmi Note 2 - Mirrors</h2>
-                <md-button ng-href="#!/index">
-                    <md-icon>home</md-icon> Home
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2 md-truncate flex>Xiaomi Redmi Note 2 - Mirrors</h2>
+            <md-button ng-href="#!/index">
+                <md-icon>home</md-icon> Home
+            </md-button>
+            <md-button ng-href="#!/faq">
+                <md-icon>help</md-icon> FAQ
+            </md-button>
+            <md-button ng-href="https://github.com/TryHardDood/hermes-mirrors/releases" target="_blank">
+                <md-icon>storage</md-icon> All releases
+            </md-button>
+            <md-menu>
+                <md-button md-menu-origin ng-click="$mdOpenMenu()">
+                    <md-icon>people</md-icon> Community
                 </md-button>
-                <md-button ng-href="#!/faq">
-                    <md-icon>help</md-icon> FAQ
-                </md-button>
-                <md-button ng-href="https://github.com/TryHardDood/hermes-mirrors/releases" target="_blank">
-                    <md-icon>storage</md-icon> All releases
-                </md-button>
-            </div>
+                <md-menu-content>
+                    <md-menu-item>
+                        <md-button ng-href="https://forum.xda-developers.com/redmi-note-2/orig-development/6-x-based-roms-nofearnohappy-kernel-t3494631" target="_blank">
+                            <md-icon>rss_feed</md-icon> XDA-Thread
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-href="https://t.me/joinchat/AAAAAEAcYGMW9RpRIW2-XQ" target="_blank">
+                            <md-icon>chat</md-icon> Telegram group
+                        </md-button>
+                    </md-menu-item>
+                    <md-menu-item>
+                        <md-button ng-href="https://discord.gg/VWZADHh" target="_blank">
+                            <md-icon>chat</md-icon> Discord chat
+                        </md-button>
+                    </md-menu-item>
+                </md-menu-content>
+            </md-menu>
 
-        </md-toolbar>
+        </div>
 
-        <md-content>
-            <div ng-view></div>
+    </md-toolbar>
 
-            <div layout="row" layout-align="center center" style="padding-bottom: 15px;">
-                <div>Made by <a style="text-decoration:none;" href="https://github.com/TryHardDood/" target="_blank">TryHardDood</a></div>
-            </div>
-        </md-content>
-    </div>
+    <md-content>
+        <div ng-view></div>
+
+        <div layout="row" layout-align="center center" style="padding-bottom: 15px;">
+            <div>Made by <a style="text-decoration:none;" href="https://github.com/TryHardDood/" target="_blank">TryHardDood</a></div>
+        </div>
+    </md-content>
 
     <script type="text/javascript" src="node_modules/angular/angular.js"></script>
     <script type="text/javascript" src="node_modules/angular-aria/angular-aria.min.js"></script>
