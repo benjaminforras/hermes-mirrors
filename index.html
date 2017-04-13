@@ -4,7 +4,6 @@
 <head>
     <script type="text/javascript">
         document.write('<base href="' + document.location + '" />');
-
     </script>
 
     <meta charset="utf-8" />
@@ -78,7 +77,6 @@
             position: relative;
             z-index: 1;
         }
-
     </style>
 </head>
 
@@ -179,7 +177,7 @@
         <div ng-view></div>
 
         <div layout="row" layout-align="center center" style="padding-bottom: 15px;">
-            <div>Made by <a style="text-decoration:none;" href="https://github.com/TryHardDood/" target="_blank">TryHardDood</a></div>
+            <div>Made by <a style="text-decoration:none;" href="https://github.com/TryHardDood/" target="_blank">TryHardDood</a> with <b style="font-size:16px; color:red;">❤</b></div>
         </div>
     </md-content>
 
@@ -194,6 +192,17 @@
     <script type="text/javascript" src="node_modules/angular-markdown-it/dist/ng-markdownit.min.js"></script>
 
     <script type="text/javascript" src="app/js/app.js"></script>
+
+    <script type="text/javascript">
+        window.ga = function() {
+            ga.q.push(arguments);
+        };
+        ga.q = [];
+        ga.l = +new Date();
+        ga('create', 'UA-96086571-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+    <script src="https://www.google-analytics.com/analytics.js" async defer></script>
 </body>
 
 </html>
