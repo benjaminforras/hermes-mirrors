@@ -1,6 +1,6 @@
 <div layout="row" layout-align="center center" layout-padding layout-margin layout-fill>
     <div flex>
-        <md-chips ng-model="ctrl.selectedTags" md-autocomplete-snap md-transform-chip="ctrl.transformChip($chip)" md-require-match="ctrl.autocompleteRequireMatch">
+        <md-chips id="tags" ng-model="ctrl.selectedTags" md-autocomplete-snap md-transform-chip="ctrl.transformChip($chip)" md-require-match="ctrl.autocompleteRequireMatch">
             <md-autocomplete md-selected-item="ctrl.selectedItem" md-search-text="ctrl.searchText" md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.name" placeholder="Enter a tag" md-on-remove="ctrl.removeChip($chip)">
                 <span md-highlight-text="ctrl.searchText">{{item.name}}</span>
             </md-autocomplete>
@@ -13,6 +13,25 @@
     </div>
 </div>
 <div layout="row" layout-align="center center" layout-padding layout-margin layout-fill>
+    <md-button ng-disabled="currentPage == 0" ng-click="currentPage=0; scrollToTop();">
+        <md-icon>first_page</md-icon>
+        First Page
+    </md-button>
+    <md-button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1; scrollToTop();">
+        <md-icon>keyboard_arrow_left</md-icon>
+        Previous
+    </md-button>
+    {{currentPage+1}}/{{numberOfPages()}}
+    <md-button ng-disabled="(currentPage >= listOfReleases.length/pageSize - 1)" ng-click="currentPage=currentPage+1; scrollToTop();">
+        Next
+        <md-icon>keyboard_arrow_right</md-icon>
+    </md-button>
+    <md-button ng-disabled="(currentPage >= listOfReleases.length/pageSize - 1)" ng-click="currentPage=numberOfPages()-1; scrollToTop();">
+        Last Page
+        <md-icon>last_page</md-icon>
+    </md-button>
+</div>
+<div layout="row" layout-align="center center" layout-padding layout-margin layout-fill>
     <div flex>
         <div ng-show="loading">
             Please wait while we load the files.
@@ -21,7 +40,7 @@
             </div>
         </div>
 
-        <div ng-repeat="release in listOfReleases | filter:filterReleases()">
+        <div ng-repeat="release in listOfReleases | filter:filterReleases() | startFrom:currentPage*pageSize | limitTo:pageSize">
             <md-card>
                 <md-card-title>
                     <md-card-title-text>
@@ -56,4 +75,23 @@
             </md-card>
         </div>
     </div>
+</div>
+<div layout="row" layout-align="center center" layout-padding layout-margin layout-fill>
+    <md-button ng-disabled="currentPage == 0" ng-click="currentPage=0; scrollToTop();">
+        <md-icon>first_page</md-icon>
+        First Page
+    </md-button>
+    <md-button ng-disabled="currentPage == 0" ng-click="currentPage=currentPage-1; scrollToTop();">
+        <md-icon>keyboard_arrow_left</md-icon>
+        Previous
+    </md-button>
+    {{currentPage+1}}/{{numberOfPages()}}
+    <md-button ng-disabled="(currentPage >= listOfReleases.length/pageSize - 1)" ng-click="currentPage=currentPage+1; scrollToTop();">
+        Next
+        <md-icon>keyboard_arrow_right</md-icon>
+    </md-button>
+    <md-button ng-disabled="(currentPage >= listOfReleases.length/pageSize - 1)" ng-click="currentPage=numberOfPages()-1; scrollToTop();">
+        Last Page
+        <md-icon>last_page</md-icon>
+    </md-button>
 </div>

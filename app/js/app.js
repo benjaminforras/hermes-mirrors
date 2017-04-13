@@ -26,7 +26,14 @@ app.config(function ($routeProvider) {
 
 app.controller('ngAppController', AppController);
 
-function AppController($scope, $http, $timeout, $location, $mdDialog, $mdSidenav) {
+app.filter('startFrom', function () {
+    return function (input, start) {
+        start = +start;
+        return input.slice(start);
+    }
+});
+
+function AppController($scope, $http, $timeout, $location, $window, $mdDialog, $mdSidenav) {
     $scope.toggleSidenav = function () {
         $mdSidenav("sidenav").toggle();
     };
@@ -130,6 +137,10 @@ function AppController($scope, $http, $timeout, $location, $mdDialog, $mdSidenav
         });
     };
 
+    $scope.scrollToTop = function () {
+        $window.scrollTo(0, 0);
+    };
+
     $scope.filterReleases = function () {
         return function (release) {
             if (self.selectedTags.length === 0) return true;
@@ -151,13 +162,19 @@ function AppController($scope, $http, $timeout, $location, $mdDialog, $mdSidenav
             return false;
         };
     };
-    $scope.listOfReleases = null;
+    $scope.listOfReleases = [];
     $scope.loading = true;
 
     $http.get(githubReleases).then(function (response) {
         $scope.listOfReleases = response.data;
         $scope.loading = false;
     });
+
+    $scope.currentPage = 0;
+    $scope.pageSize = 5;
+    $scope.numberOfPages = function () {
+        return Math.ceil($scope.listOfReleases.length / $scope.pageSize);
+    }
 
     if ($location.search().tab) {
         var oldTags = $location.search().tab;
