@@ -89,65 +89,19 @@
             </md-button>
             <h2 md-truncate flex>Xiaomi Redmi Note 2 - Mirrors</h2>
             <div hide show-lg>
-                <md-button ng-href="#!/index" ng-click="toggleSidenav()">
+                <md-button ng-href="#!/index">
                     <md-icon>home</md-icon> Home
                 </md-button>
-                <md-button ng-href="#!/faq" ng-click="toggleSidenav()">
+                <md-button ng-href="#!/faq">
                     <md-icon>help</md-icon> FAQ
                 </md-button>
-                <md-button ng-href="https://github.com/TryHardDood/hermes-mirrors/releases" target="_blank" ng-click="toggleSidenav()">
+                <md-button ng-href="https://github.com/TryHardDood/hermes-mirrors/releases" target="_blank">
                     <md-icon>storage</md-icon> All releases
                 </md-button>
                 <md-menu>
                     <md-button md-menu-origin ng-click="$mdOpenMenu()">
                         <md-icon>people</md-icon> Community
                     </md-button>
-                    <md-menu-content>
-                        <md-menu-item>
-                            <md-button ng-href="https://forum.xda-developers.com/redmi-note-2/orig-development/6-x-based-roms-nofearnohappy-kernel-t3494631" target="_blank" ng-click="toggleSidenav()">
-                                <md-icon>rss_feed</md-icon> XDA-Thread
-                            </md-button>
-                        </md-menu-item>
-                        <md-menu-item>
-                            <md-button ng-href="https://t.me/joinchat/AAAAAEAcYGMW9RpRIW2-XQ" target="_blank" ng-click="toggleSidenav()">
-                                <md-icon>chat</md-icon> Telegram group
-                            </md-button>
-                        </md-menu-item>
-                        <md-menu-item>
-                            <md-button ng-href="https://discord.gg/VWZADHh" target="_blank" ng-click="toggleSidenav()">
-                                <md-icon>chat</md-icon> Discord chat
-                            </md-button>
-                        </md-menu-item>
-                    </md-menu-content>
-                </md-menu>
-            </div>
-        </div>
-    </md-toolbar>
-
-    <md-sidenav class="md-sidenav-left" md-component-id="sidenav" md-whiteframe="4">
-        <md-toolbar>
-            <h2 class="md-toolbar-tools">Xiaomi Redmi Note 2 - Mirrors</h2>
-        </md-toolbar>
-
-        <md-content layout-margin>
-            <md-list>
-                <md-list-item ng-href="#!/index">
-                    <md-icon>home</md-icon>
-                    <p>Home</p>
-                </md-list-item>
-                <md-list-item ng-href="#!/faq">
-                    <md-icon>help</md-icon>
-                    <p>FAQ</p>
-                </md-list-item>
-                <md-list-item ng-href="https://github.com/TryHardDood/hermes-mirrors/releases" target="_blank">
-                    <md-icon>storage</md-icon>
-                    <p>All releases</p>
-                </md-list-item>
-                <md-menu>
-                    <md-list-item md-menu-origin ng-click="$mdOpenMenu()">
-                        <md-icon>people</md-icon>
-                        <p>Community</p>
-                    </md-list-item>
                     <md-menu-content>
                         <md-menu-item>
                             <md-button ng-href="https://forum.xda-developers.com/redmi-note-2/orig-development/6-x-based-roms-nofearnohappy-kernel-t3494631" target="_blank">
@@ -166,6 +120,52 @@
                         </md-menu-item>
                     </md-menu-content>
                 </md-menu>
+            </div>
+        </div>
+    </md-toolbar>
+
+    <md-sidenav class="md-sidenav-left" md-component-id="sidenav" md-whiteframe="4">
+        <md-toolbar>
+            <h2 class="md-toolbar-tools">Xiaomi Redmi Note 2 - Mirrors</h2>
+        </md-toolbar>
+
+        <md-content layout-margin>
+            <md-list>
+                <md-list-item ng-href="#!/index" ng-click="toggleSidenav()">
+                    <md-icon>home</md-icon>
+                    <p>Home</p>
+                </md-list-item>
+                <md-list-item ng-href="#!/faq" ng-click="toggleSidenav()">
+                    <md-icon>help</md-icon>
+                    <p>FAQ</p>
+                </md-list-item>
+                <md-list-item ng-href="https://github.com/TryHardDood/hermes-mirrors/releases" target="_blank" ng-click="toggleSidenav()">
+                    <md-icon>storage</md-icon>
+                    <p>All releases</p>
+                </md-list-item>
+                <md-menu>
+                    <md-list-item md-menu-origin ng-click="$mdOpenMenu()">
+                        <md-icon>people</md-icon>
+                        <p>Community</p>
+                    </md-list-item>
+                    <md-menu-content>
+                        <md-menu-item>
+                            <md-button ng-href="https://forum.xda-developers.com/redmi-note-2/orig-development/6-x-based-roms-nofearnohappy-kernel-t3494631" target="_blank" ng-click="toggleSidenav()">
+                                <md-icon>rss_feed</md-icon> XDA-Thread
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-href="https://t.me/joinchat/AAAAAEAcYGMW9RpRIW2-XQ" target="_blank" ng-click="toggleSidenav()">
+                                <md-icon>chat</md-icon> Telegram group
+                            </md-button>
+                        </md-menu-item>
+                        <md-menu-item>
+                            <md-button ng-href="https://discord.gg/VWZADHh" target="_blank" ng-click="toggleSidenav()">
+                                <md-icon>chat</md-icon> Discord chat
+                            </md-button>
+                        </md-menu-item>
+                    </md-menu-content>
+                </md-menu>
             </md-list>
         </md-content>
     </md-sidenav>
@@ -178,7 +178,7 @@
         </div>
     </md-content>
 
-    <script type="text/javascript" src="node_modules/angular/angular.js"></script>
+    <script type="text/javascript" src="node_modules/angular/angular.min.js"></script>
     <script type="text/javascript" src="node_modules/angular-aria/angular-aria.min.js"></script>
     <script type="text/javascript" src="node_modules/angular-sanitize/angular-sanitize.min.js"></script>
     <script type="text/javascript" src="node_modules/angular-animate/angular-animate.min.js"></script>
