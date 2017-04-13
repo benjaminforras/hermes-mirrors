@@ -4,6 +4,7 @@
 <head>
     <script type="text/javascript">
         document.write('<base href="' + document.location + '" />');
+
     </script>
 
     <meta charset="utf-8" />
@@ -72,6 +73,7 @@
             padding: 2px 4px;
             border-radius: 4px;
         }
+
     </style>
 </head>
 
@@ -82,18 +84,18 @@
 
     <md-toolbar layout="row">
         <div class="md-toolbar-tools">
-            <md-button hide-gt-sm class="menu" ng-click="showSidenav()">
+            <md-button hide-gt-sm class="menu" ng-click="toggleSidenav()">
                 <md-icon>menu</md-icon>
             </md-button>
             <h2 md-truncate flex>Xiaomi Redmi Note 2 - Mirrors</h2>
             <div hide show-lg>
-                <md-button ng-href="#!/index">
+                <md-button ng-href="#!/index" ng-click="toggleSidenav()">
                     <md-icon>home</md-icon> Home
                 </md-button>
-                <md-button ng-href="#!/faq">
+                <md-button ng-href="#!/faq" ng-click="toggleSidenav()">
                     <md-icon>help</md-icon> FAQ
                 </md-button>
-                <md-button ng-href="https://github.com/TryHardDood/hermes-mirrors/releases" target="_blank">
+                <md-button ng-href="https://github.com/TryHardDood/hermes-mirrors/releases" target="_blank" ng-click="toggleSidenav()">
                     <md-icon>storage</md-icon> All releases
                 </md-button>
                 <md-menu>
@@ -102,17 +104,17 @@
                     </md-button>
                     <md-menu-content>
                         <md-menu-item>
-                            <md-button ng-href="https://forum.xda-developers.com/redmi-note-2/orig-development/6-x-based-roms-nofearnohappy-kernel-t3494631" target="_blank">
+                            <md-button ng-href="https://forum.xda-developers.com/redmi-note-2/orig-development/6-x-based-roms-nofearnohappy-kernel-t3494631" target="_blank" ng-click="toggleSidenav()">
                                 <md-icon>rss_feed</md-icon> XDA-Thread
                             </md-button>
                         </md-menu-item>
                         <md-menu-item>
-                            <md-button ng-href="https://t.me/joinchat/AAAAAEAcYGMW9RpRIW2-XQ" target="_blank">
+                            <md-button ng-href="https://t.me/joinchat/AAAAAEAcYGMW9RpRIW2-XQ" target="_blank" ng-click="toggleSidenav()">
                                 <md-icon>chat</md-icon> Telegram group
                             </md-button>
                         </md-menu-item>
                         <md-menu-item>
-                            <md-button ng-href="https://discord.gg/VWZADHh" target="_blank">
+                            <md-button ng-href="https://discord.gg/VWZADHh" target="_blank" ng-click="toggleSidenav()">
                                 <md-icon>chat</md-icon> Discord chat
                             </md-button>
                         </md-menu-item>

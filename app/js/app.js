@@ -27,7 +27,7 @@ app.config(function ($routeProvider) {
 app.controller('ngAppController', AppController);
 
 function AppController($scope, $http, $timeout, $location, $mdDialog, $mdSidenav) {
-    $scope.showSidenav = function () {
+    $scope.toggleSidenav = function () {
         $mdSidenav("sidenav").toggle();
     };
 
