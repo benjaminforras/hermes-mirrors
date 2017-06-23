@@ -1,0 +1,33 @@
+<br/>
+<div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
+  <div class="item item-1" fxFlex="20%"></div>
+  <div class="item item-2" fxFlex="20%" fxFlexOrder="3">
+  </div>
+  <div class="item item-3" fxFlex>
+    <md-card>
+      <md-card-header>
+        <md-card-title>
+          <h3>Frequently Asked Questions</h3>
+        </md-card-title>
+      </md-card-header>
+      <md-card-content>
+        <div *ngFor="let faq of faqsItems">
+          <md-card-header>
+            <h4>{{faq?.Category}}</h4>
+          </md-card-header>
+          <md-card-content *ngFor="let qna of faq?.Messages">
+            <md-expansion-panel>
+              <md-expansion-panel-header>
+                <mat-panel-description></mat-panel-description>
+                <mat-panel-title>{{qna?.question}}</mat-panel-title>
+              </md-expansion-panel-header>
+              <div *ngFor="let answer of qna?.answers">
+                <markdown [data]='answer'></markdown>
+              </div>
+            </md-expansion-panel>
+          </md-card-content>
+        </div>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>

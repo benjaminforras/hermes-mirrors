@@ -1,0 +1,147 @@
+.md-button-group,
+.md-button-group-vertical {
+  position: relative;
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.md-button-group > md-button,
+.md-button-group-vertical > md-button {
+  position: relative;
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 1 auto;
+  -ms-flex: 0 1 auto;
+  flex: 0 1 auto;
+  margin-bottom: 0;
+}
+
+.md-button-group > md-button:hover,
+.md-button-group-vertical > md-button:hover {
+  z-index: 2;
+}
+
+.md-button-group > md-button:focus, .md-button-group > md-button:active, .md-button-group > md-button.active,
+.md-button-group-vertical > md-button:focus,
+.md-button-group-vertical > md-button:active,
+.md-button-group-vertical > md-button.active {
+  z-index: 2;
+}
+
+.md-button-group md-button + md-button,
+.md-button-group md-button + .md-button-group,
+.md-button-group .md-button-group + md-button,
+.md-button-group .md-button-group + .md-button-group,
+.md-button-group-vertical md-button + md-button,
+.md-button-group-vertical md-button + .md-button-group,
+.md-button-group-vertical .md-button-group + md-button,
+.md-button-group-vertical .md-button-group + .md-button-group {
+  margin-left: -1px;
+}
+
+.md-button-group > md-button:not(:first-child):not(:last-child):not(.dropdown-toggle) {
+  border-radius: 0;
+}
+
+.md-button-group > md-button:first-child {
+  margin-left: 0;
+}
+
+.md-button-group > md-button:first-child:not(:last-child):not(.dropdown-toggle) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.md-button-group > md-button:last-child:not(:first-child),
+.md-button-group > .dropdown-toggle:not(:first-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.md-button-group > .md-button-group {
+  float: left;
+}
+
+.md-button-group > .md-button-group:not(:first-child):not(:last-child) > md-button {
+  border-radius: 0;
+}
+
+.md-button-group > .md-button-group:first-child:not(:last-child) > md-button:last-child,
+.md-button-group > .md-button-group:first-child:not(:last-child) > .dropdown-toggle {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.md-button-group > .md-button-group:last-child:not(:first-child) > md-button:first-child {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.md-button-group-vertical {
+  display: -webkit-inline-box;
+  display: -webkit-inline-flex;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: start;
+  -webkit-align-items: flex-start;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.md-button-group-vertical md-button,
+.md-button-group-vertical .md-button-group {
+  width: 100%;
+}
+
+.md-button-group-vertical > md-button + md-button,
+.md-button-group-vertical > md-button + .md-button-group,
+.md-button-group-vertical > .md-button-group + md-button,
+.md-button-group-vertical > .md-button-group + .md-button-group {
+  margin-top: -1px;
+  margin-left: 0;
+}
+
+.md-button-group-vertical > md-button:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+
+.md-button-group-vertical > md-button:first-child:not(:last-child) {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.md-button-group-vertical > md-button:last-child:not(:first-child) {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.md-button-group-vertical > .md-button-group:not(:first-child):not(:last-child) > md-button {
+  border-radius: 0;
+}
+
+.md-button-group-vertical > .md-button-group:first-child:not(:last-child) > md-button:last-child,
+.md-button-group-vertical > .md-button-group:first-child:not(:last-child) > .dropdown-toggle {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.md-button-group-vertical > .md-button-group:last-child:not(:first-child) > md-button:first-child {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.disabled {
+  opacity: .65;
+  cursor: not-allowed !important;
+}

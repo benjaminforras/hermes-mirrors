@@ -1,0 +1,28 @@
+<br/>
+<my-release-search></my-release-search>
+<br/>
+<div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
+  <div class="item item-1" fxFlex="20%"></div>
+  <div class="item item-2" fxFlex="20%" fxFlexOrder="3">
+  </div>
+  <div class="item item-3" fxFlex>
+    <md-card>
+      <md-card-header>
+        <md-card-title>
+          <h3>Latest Releases</h3>
+        </md-card-title>
+      </md-card-header>
+      <md-card-content>
+        <md-nav-list>
+          <md-list-item *ngFor="let release of releases" (click)="gotoDetail(release)">
+            <md-icon md-list-icon>insert_drive_file</md-icon>
+            <h4 md-line>{{release.name}}</h4>
+            <p md-line> {{release.published_at | date}} </p>
+          </md-list-item>
+        </md-nav-list>
+      </md-card-content>
+    </md-card>
+  </div>
+</div>
+
+

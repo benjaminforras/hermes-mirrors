@@ -1,0 +1,20 @@
+<div class="container" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px" fxLayoutGap.xs="0">
+  <div fxFlex="15%"></div>
+  <div fxFlex="15%" fxFlexOrder="3"></div>
+  <div fxFlex>
+    <h2 md-dialog-title>Share {{!release.name ? release.tag_name : release.name}}</h2>
+    <md-dialog-content>
+      <a md-button style="background-color: #336297;color:#FFFFFF;" class="fb-xfbml-parse-ignore" target="_blank"
+         href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Ftryharddood.github.io%2Fhermes-mirrors%2F%23%2Fetails%2F{{release.id}}&amp;src=sdkpreparse">Share
+        on Facebook</a>
+      <a md-button style="background-color: #E74237;color:#FFFFFF;"
+         href="https://plus.google.com/share?url=https://tryharddood.github.io/hermes-mirrors/hermes-mirrors/#/detail/{{release.id}}"
+         target="_blank">Share on Google+</a>
+
+      <md-input-container style="width:100%;font-size: 20px;">
+        <span mdSuffix>&nbsp;<button md-button [attr.disabled]="isCopied" (click)="copyToClipboard(shareLink.value)">Copy</button></span>
+        <input mdInput #shareLink value="https://tryharddood.github.io/hermes-mirrors/#/detail/{{release.id}}" disabled/>
+      </md-input-container>
+    </md-dialog-content>
+  </div>
+</div>
