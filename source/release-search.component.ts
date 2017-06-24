@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
 
 import {Release} from "./release";
@@ -11,31 +11,26 @@ import "rxjs/add/operator/distinctUntilChanged";
 import "rxjs/add/operator/switchMap";
 
 import {ReleaseService} from "./_services/release.service";
+import {MdSnackBar} from "@angular/material";
+import {Observable} from "rxjs/Observable";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'my-release-search',
   templateUrl: './release-search.component.html',
   styleUrls: ['./release-search.component.css']
 })
-export class ReleaseSearchComponent {
-  releases: Array<Release>;
+export class ReleaseSearchComponent implements OnInit {
+  releases: Observable<Array<Release>>;
+  term = new FormControl();
 
   constructor(private releaseService: ReleaseService,
+              private snackBar: MdSnackBar,
               private router: Router) {
   }
 
-  filterItem(value) {
-    if (!value) {
-      this.releases = null;
-      return false;
-    }
-    this.releases = Object.assign([], this.releaseService.getReleasesArray()).filter(
-      item => {
-        if (item.name.toLowerCase().search(value.toLowerCase()) !== -1 || item.tag_name.toLowerCase().search(value.toLowerCase()) !== -1 || item.id.toString().search(value.toLowerCase()) !== -1) {
-          return true;
-        }
-      }
-    )
+  ngOnInit() {
+    this.releases = this.term.valueChanges.debounceTime(100).distinctUntilChanged().switchMap(term => this.releaseService.search(term));
   }
 
   gotoDetail(release: Release): void {

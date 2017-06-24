@@ -38,7 +38,7 @@ export class ReleaseDetailComponent implements OnInit {
       if (params['id'] !== undefined) {
         const id = +params['id'];
         this.release = this.releaseService.getRelease(id);
-        if(this.release === undefined){
+        if (this.release === undefined) {
           this.router.navigate(["/index"]);
           this.snackBar.open('Release was not found!', '', {
             duration: 5000

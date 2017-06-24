@@ -13,7 +13,8 @@
 
       <md-input-container style="width:100%;font-size: 20px;">
         <span mdSuffix>&nbsp;<button md-button [attr.disabled]="isCopied" (click)="copyToClipboard(shareLink.value)">Copy</button></span>
-        <input mdInput #shareLink value="https://tryharddood.github.io/hermes-mirrors/#/detail/{{release.id}}" disabled/>
+        <input mdInput #shareLink value="https://tryharddood.github.io/hermes-mirrors/#/detail/{{release.id}}"
+               disabled/>
       </md-input-container>
     </md-dialog-content>
   </div>

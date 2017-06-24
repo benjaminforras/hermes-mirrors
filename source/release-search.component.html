@@ -3,10 +3,14 @@
   <div fxFlex="20%"></div>
   <div fxFlex="20%" fxFlexOrder="3"></div>
   <div fxFlex>
-    <md-input-container style="width:100%;font-size: 20px;">
-      <span md-prefix><md-icon>search</md-icon>&nbsp;</span>
-      <input mdInput #searchBox id="search-box" (keyup)="filterItem(searchBox.value)" placeholder="Search"/>
-    </md-input-container>
+    <form>
+      <md-input-container style="width:100%;font-size: 20px;">
+        <input mdInput [formControl]="term" placeholder="Search" type="text"/>
+        <button md-button mdSuffix>
+          <md-icon>search</md-icon>&nbsp;
+        </button>
+      </md-input-container>
+    </form>
   </div>
 </div>
 
@@ -14,7 +18,7 @@
   <div fxFlex="20%"></div>
   <div fxFlex="20%" fxFlexOrder="3"></div>
   <div fxFlex>
-    <md-card *ngIf="releases">
+    <md-card *ngIf="(releases | async)?.length > 0 && term.value">
       <md-card-header>
         <md-card-title>
           <h3>Search</h3>
@@ -22,7 +26,7 @@
       </md-card-header>
       <md-card-content>
         <md-nav-list>
-          <md-list-item *ngFor="let release of releases" (click)="gotoDetail(release)">
+          <md-list-item *ngFor="let release of releases | async" (click)="gotoDetail(release)">
             <md-icon md-list-icon>insert_drive_file</md-icon>
             <h4 md-line>{{release?.name}}</h4>
             <p md-line> {{release?.published_at | date}} </p>

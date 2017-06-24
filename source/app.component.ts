@@ -5,24 +5,37 @@ import {ReleaseService} from "./_services/release.service";
 @Component({
   selector: 'app-root',
   template: `
-    <md-sidenav-container class="my-sidenav-container">
-      <md-sidenav #sidenav style="width: 300px;">
-        <md-nav-list fxLayout="column" fxLayoutAlign="center center">
-          <a md-list-item fxFlex routerLink="/index" routerLinkActive="active" style="width: 100%;">
+    <md-sidenav-container class="sidenav-container">
+      <md-sidenav #sidenav style="width: 100%;">
+        <md-toolbar color="primary">
+          <span>Xiaomi Redmi Note 2 - Mirrors</span>
+        </md-toolbar>
+        <md-nav-list (click)="sidenav.close()">
+          <a md-list-item routerLink="/index" routerLinkActive="active" style="width: 100%;">
+            <span style="flex: 1 1 auto;"></span>
             <md-icon>home</md-icon>&nbsp;
             Home
+            <span style="flex: 1 1 auto;"></span>
           </a>
-          <a md-list-item fxFlex routerLink="/faq" routerLinkActive="active" style="width: 100%;">
+          <a md-list-item routerLink="/faq" routerLinkActive="active" style="width: 100%;"
+             (click)="sidenav.close()">
+            <span style="flex: 1 1 auto;"></span>
             <md-icon>help</md-icon>&nbsp;
             FAQ
+            <span style="flex: 1 1 auto;"></span>
           </a>
-          <a md-list-item fxFlex routerLink="/releases" routerLinkActive="active" style="width: 100%;">
+          <a md-list-item routerLink="/releases" routerLinkActive="active" style="width: 100%;"
+             (click)="sidenav.close()">
+            <span style="flex: 1 1 auto;"></span>
             <md-icon>storage</md-icon>&nbsp;
-            All release
+            All releases
+            <span style="flex: 1 1 auto;"></span>
           </a>
-          <a md-list-item fxFlex [mdMenuTriggerFor]="menu" style="width: 100%;">
+          <a md-list-item [mdMenuTriggerFor]="menu" style="width: 100%;">
+            <span style="flex: 1 1 auto;"></span>
             <md-icon>people</md-icon>&nbsp;
             Community
+            <span style="flex: 1 1 auto;"></span>
           </a>
         </md-nav-list>
       </md-sidenav>
@@ -79,13 +92,13 @@ import {ReleaseService} from "./_services/release.service";
         <md-menu #menu="mdMenu">
           <a md-menu-item
              href="https://forum.xda-developers.com/redmi-note-2/orig-development/6-x-based-roms-nofearnohappy-kernel-t3494631"
-             target="_blank">
+             target="_blank" (click)="sidenav.close()">
             <md-icon>rss_feed</md-icon>
             XDA-Thread</a>
-          <a md-menu-item href="https://t.me/joinchat/AAAAAEAcYGMW9RpRIW2-XQ" target="_blank">
+          <a md-menu-item href="https://t.me/joinchat/AAAAAEAcYGMW9RpRIW2-XQ" target="_blank" (click)="sidenav.close()">
             <md-icon>chat</md-icon>
             Telegram group</a>
-          <a md-menu-item href="https://discord.gg/VWZADHh" target="_blank">
+          <a md-menu-item href="https://discord.gg/VWZADHh" target="_blank" (click)="sidenav.close()">
             <md-icon>chat</md-icon>
             Discord chat</a>
         </md-menu>
@@ -93,6 +106,7 @@ import {ReleaseService} from "./_services/release.service";
       </md-toolbar>
 
       <router-outlet></router-outlet>
+      <br/>
     </md-sidenav-container>`,
   styleUrls: ['./app.component.css']
 })

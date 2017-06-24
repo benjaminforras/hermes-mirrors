@@ -16,8 +16,8 @@ export class FaqService {
   loadFaqs(): void {
     this.faqs = null;
     this.http.get(this.faqsUrl).toPromise().then((response) => {
-     this.faqs = (response.json() as FaqItem[]);
-     }).catch(this.handleError);
+      this.faqs = (response.json() as FaqItem[]);
+    }).catch(this.handleError);
   }
 
   getFaqItemsArray(): Array<FaqItem> {

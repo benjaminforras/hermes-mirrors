@@ -4,6 +4,7 @@ import {Http} from "@angular/http";
 import "rxjs/add/operator/toPromise";
 
 import {Release} from "../release";
+import {Observable} from "rxjs/Observable";
 
 @Injectable()
 export class ReleaseService {
@@ -28,6 +29,19 @@ export class ReleaseService {
   getRelease(id: number): Release {
     return this.releases.find(release => release.id === id);
   }
+
+  search(term: string) {
+    return Observable.of(Object.assign([], this.getReleasesArray()).filter(
+      item => {
+        if (item.name.toLowerCase().search(term.toLowerCase()) !== -1
+          || item.tag_name.toLowerCase().search(term.toLowerCase()) !== -1
+          || item.id.toString().search(term.toLowerCase()) !== -1) {
+          return true;
+        }
+      }
+    ));
+  }
+
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
