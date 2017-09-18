@@ -1,0 +1,110 @@
+[{
+    "Category": "LineageOS 13",
+    "Messages": [{
+        "question": "Camera is crashing.",
+        "answers": [
+          "It's a known bug, you can't do much but wait for the developers to fix it.",
+          "_Note: You're camera is crashing because you have an **s5k3m2** camera or because of the **dpframework**_"
+        ]
+      },
+      {
+        "question": "Audio quality is bad.",
+        "answers": [
+          "If you're using the second test version of Dinolek's rom, you'll need to flash the fix from the release.",
+          "[Click here](https://tryharddood.github.io/hermes-mirrors/index.html?releaseId=5863972)"
+        ]
+      },
+      {
+        "question": "Battery is draining very fast.",
+        "answers": [
+          "**Here's what you can do:**",
+          "* _Clean install the rom._",
+          "* _Use the latest rom from Dinolek._",
+          "* _Remove all unnecessary apps._",
+          "* _Install Greenify, LSpeed or Redmi Note 2 Tool_"
+        ]
+      }
+    ]
+  },
+  {
+    "Category": "Ressurrection Remix v5.8.2 - Port version",
+    "Messages": [{
+        "question": "Can't unlock the phone",
+        "answers": [
+          "This is a port bug.",
+          "**Here's what you can do:**",
+          "* Wait for an actual build from Dinolek",
+          "* Double tap the power button",
+          "* Call your phone and pick it up, then press the back button. Also install No Lock from Google Play.",
+          "* Revert back to Marshmellow"
+        ]
+      },
+      {
+        "question": "Camera's focus and HDR not working",
+        "answers": [
+          "_You can't do much about it._",
+          "Will be fixed in the near future."
+        ]
+      },
+      {
+        "question": "Camera not working",
+        "answers": [
+          "Flash the fix from the release: ",
+          "[Click here for the release](https://tryharddood.github.io/hermes-mirrors/index.html?releaseId=5897305)"
+        ]
+      },
+      {
+        "question": "Does CM Theme engine works?",
+        "answers": [
+          "_For Nougat there's no CM Theme engine_",
+          "_It's uses Substratum_"
+        ]
+      }
+    ]
+  },
+  {
+    "Category": "TWRP",
+    "Messages": [{
+      "question": "How to install .img files?",
+      "answers": [
+        "**It's easy**",
+        "* [First click here to learn the basics](http://bfy.tw/Azwa)",
+        "* Then find this link: [Click](https://www.xda-developers.com/how-to-install-twrp/)"
+      ]
+    }]
+  },
+  {
+    "Category": "DualBoot",
+    "Messages": [{
+        "question": "What's dualboot?",
+        "answers": [
+          "You can run multiple ROMs on your rooted Android phone with DualBootPatcher, and pick which one to use when you start it up.",
+          "[**Here you can find more informations**](https://forum.xda-developers.com/crossdevice-dev/android-one-crossdevice-development-original-android-development/dualboot-dualbootpatcher-simpler-dual-t3297414)"
+        ]
+      },
+      {
+        "question": "How do I use it?",
+        "answers": [
+          "_Go to the DualBootPatcher's xda thread_",
+          "Search for the 'How do I...?' section."
+        ]
+      }
+    ]
+  },
+  {
+    "Category": "Other",
+    "Messages": [{
+      "question": "I found a bug, what should I do?",
+      "answers": [
+        "**Well, report it to a Developer.**",
+        "_You may be wondering now, Where and How you can do that?_",
+        "**The answer is simple:**",
+        "* In the Telegram group: [(Here)](https://t.me/joinchat/AAAAAEAcYGMW9RpRIW2-XQ)",
+        "* In the Discord group: [(Here)](https://discord.gg/VWZADHh)",
+        "* In the XDA-Thread: [(Here)](https://forum.xda-developers.com/redmi-note-2/orig-development/6-x-based-roms-nofearnohappy-kernel-t3494631)",
+        "_I'll just leave this image here.._",
+        "![GTFO](http://i.imgur.com/Ty8vE8G.png)"
+      ]
+    }]
+  }
+]

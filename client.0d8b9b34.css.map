@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/components/ViewRelease.vue"],"names":[],"mappings":"AACA,0BACE,iBAAmB,CAErB,6BACE,iBAAmB","file":"client.0d8b9b34.css","sourcesContent":["\n#view-release .speed-dial {\n  position: absolute;\n}\n#view-release .btn--floating {\n  position: relative;\n}\n\n\n\n// WEBPACK FOOTER //\n// ./src/components/ViewRelease.vue"],"sourceRoot":""}
