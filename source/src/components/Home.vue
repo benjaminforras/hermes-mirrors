@@ -18,7 +18,7 @@
             <div class="headline">Search</div>
           </v-card-title>
             <v-list two-line subheader v-if="searchRelease.length > 0">
-              <v-list-tile avatar @click="" v-for="release in searchRelease" :key="release.id">
+              <v-list-tile avatar @click="$router.push('/detail/' + release.id)" v-for="release in searchRelease" :key="release.id">
                 <v-list-tile-avatar>
                   <v-icon>insert_drive_file</v-icon>
                 </v-list-tile-avatar>
