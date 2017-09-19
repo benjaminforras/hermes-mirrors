@@ -34,6 +34,10 @@ export default new Router({
       path: '/faq',
       name: 'faq',
       component: Faq
+    },
+    {
+      path: '*',
+      redirect: '/'
     }
   ]
 })
