@@ -128,10 +128,10 @@ export default {
       cpu: 'Octa-core 2.0/2.2 GHz Cortex-A53 - Redmi Note 2',
       chipset: 'Mediatek MT6795 Helio X10',
       gpu: 'PowerVR G6200',
-      memory: '2GB/3GB',
+      memory: '2GB',
       storage: '16GB/32GB',
-      microsd: 'Up to 32GB',
-      battery: 'Removable Li-Po 3060 mAh battery',
+      microsd: 'Up to 64GB',
+      battery: 'Removable Li-Ion 3060 mAh battery',
       display: '1920x1080 pixels, 5.5 inches (~403 ppi pixel density)',
       rear_camera: '13 MP, f/2.2, phase detection autofocus, LED flash',
       front_camera: '5 MP, f/2.0, 720p'
